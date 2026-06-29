@@ -1,11 +1,867 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// This page has no server-side data or props — it's a static marketing page.
+// The frontmatter block above is intentionally empty.
 ---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Magic with Jen | Marketing that sounds like you</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Poppins:wght@300;400;500;600&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf7f2;
+    --plum: #4e3a5a;
+    --plum-soft: #6b5380;
+    --coral: #f26b6b;
+    --coral-deep: #e1504f;
+    --teal: #5fa8a8;
+    --gold: #d9a441;
+    --ink: #3a2c45;
+    --max: 1180px;
+  }
 
-<Layout>
-	<Welcome />
-</Layout>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 { font-family: 'Lora', serif; color: var(--plum); line-height: 1.15; font-weight: 600; }
+  .script { font-family: 'Caveat', cursive; font-weight: 600; }
+  a { text-decoration: none; color: inherit; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+  @media (max-width: 420px) { .wrap { padding: 0 20px; } }
+
+  .sparkle { display: inline-block; position: relative; width: 1em; height: 1em; }
+  .sparkle svg { width: 100%; height: 100%; display: block; }
+
+  .reveal-word { position: relative; display: inline-block; color: var(--coral-deep); font-style: italic; }
+  .reveal-word .sparkle {
+    position: absolute; top: -0.55em; right: -0.7em; width: 0.55em; height: 0.55em; color: var(--gold);
+    animation: twinkle 2.6s ease-in-out infinite;
+  }
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.4; transform: scale(0.85) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.05) rotate(8deg); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-word .sparkle { animation: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  nav {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(250, 247, 242, 0.92);
+    backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(78, 58, 90, 0.08);
+  }
+  nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 84px; gap: 16px; }
+  .logo { font-family: 'Lora', serif; font-weight: 700; font-size: 1.5rem; color: var(--plum); display: flex; align-items: baseline; gap: 8px; flex-shrink: 0; }
+  .logo .magic-word { color: var(--coral); }
+  .logo .with-jen { font-family: 'Caveat', cursive; font-weight: 600; font-size: 1.1rem; color: var(--gold); }
+
+  .nav-links { display: flex; gap: 28px; font-size: 0.92rem; font-weight: 500; color: var(--plum); }
+  .nav-links a { position: relative; padding: 4px 0; }
+  .nav-links a::after {
+    content: ''; position: absolute; left: 0; bottom: -2px; width: 0; height: 2px;
+    background: var(--coral); transition: width 0.25s ease;
+  }
+  .nav-links a:hover::after { width: 100%; }
+
+  .nav-cta {
+    background: var(--coral); color: var(--cream); padding: 11px 24px; border-radius: 999px;
+    font-weight: 600; font-size: 0.9rem; transition: transform 0.2s ease, background 0.2s ease; white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .nav-cta:hover { background: var(--coral-deep); transform: translateY(-1px); }
+
+  .nav-toggle {
+    display: none; flex-shrink: 0; width: 40px; height: 40px; border-radius: 10px;
+    background: rgba(78,58,90,0.06); border: none; cursor: pointer;
+    align-items: center; justify-content: center; padding: 0;
+  }
+  .nav-toggle:focus-visible { outline: 2px solid var(--coral); outline-offset: 2px; }
+  .nav-toggle svg { width: 20px; height: 20px; color: var(--plum); }
+  .nav-toggle .icon-close { display: none; }
+  nav.menu-open .nav-toggle .icon-open { display: none; }
+  nav.menu-open .nav-toggle .icon-close { display: block; }
+
+  .nav-mobile-panel {
+    display: none; flex-direction: column; gap: 4px;
+    padding: 8px 32px 20px; border-top: 1px solid rgba(78,58,90,0.08);
+  }
+  .nav-mobile-panel a {
+    padding: 13px 4px; font-size: 1rem; font-weight: 500; color: var(--plum);
+    border-bottom: 1px solid rgba(78,58,90,0.06);
+  }
+  .nav-mobile-panel a:last-child {
+    border-bottom: none; color: var(--coral-deep); font-weight: 600;
+  }
+  nav.menu-open .nav-mobile-panel { display: flex; }
+
+  /* Breakpoint aligned with every other section's tablet/mobile breakpoint (880px) */
+  @media (max-width: 880px) {
+    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-cta { display: none; } /* repeated as the last item in .nav-mobile-panel instead */
+    nav .wrap { height: 72px; }
+  }
+  @media (min-width: 881px) {
+    .nav-mobile-panel { display: none !important; }
+  }
+
+  .btn-primary {
+    background: var(--coral); color: var(--cream); padding: 16px 32px; border-radius: 999px;
+    font-weight: 600; font-size: 1rem; display: inline-flex; align-items: center; gap: 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    box-shadow: 0 8px 24px rgba(242, 107, 107, 0.28); border: none; cursor: pointer; font-family: 'Poppins', sans-serif;
+  }
+  .btn-primary:hover { background: var(--coral-deep); transform: translateY(-2px); box-shadow: 0 12px 28px rgba(242,107,107,0.35); }
+
+  .btn-secondary {
+    font-weight: 500; color: var(--plum); border-bottom: 1.5px solid var(--plum); padding-bottom: 2px;
+    transition: color 0.2s ease, border-color 0.2s ease;
+  }
+  .btn-secondary:hover { color: var(--coral-deep); border-color: var(--coral-deep); }
+
+  section { padding: 100px 0; position: relative; }
+  .section-eyebrow { font-family: 'Caveat', cursive; font-size: 1.3rem; color: var(--coral); display: block; margin-bottom: 8px; }
+  .section-head { max-width: 640px; margin-bottom: 56px; }
+  .section-head h2 { font-size: clamp(1.9rem, 3vw, 2.5rem); }
+  .section-head p { color: var(--plum-soft); font-size: 1.08rem; margin-top: 16px; }
+  .section-head.center { margin: 0 auto 56px; text-align: center; }
+
+  /* HERO */
+  .hero { padding: 100px 0 0; }
+  .hero .wrap { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 64px; align-items: center; }
+  .eyebrow-tag { font-family: 'Caveat', cursive; font-size: 1.4rem; color: var(--gold); margin-bottom: 6px; display: block; }
+  .hero h1 { font-size: clamp(2.3rem, 4vw, 3.4rem); margin-bottom: 26px; letter-spacing: -0.01em; }
+  .hero-sub { font-size: 1.15rem; color: var(--plum-soft); max-width: 480px; margin-bottom: 36px; }
+  .hero-ctas { display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
+
+  .hero-visual { position: relative; height: 480px; }
+  .note-card { position: absolute; width: 280px; background: white; border-radius: 18px; padding: 26px 26px 22px; box-shadow: 0 18px 40px rgba(78, 58, 90, 0.14); }
+  .note-card.back { top: 0; left: 0; transform: rotate(-6deg); background: var(--plum); color: var(--cream); }
+  .note-card.back .note-label { color: rgba(250,247,242,0.6); }
+  .note-card.front { top: 200px; left: 150px; transform: rotate(4deg); border: 1.5px solid rgba(78,58,90,0.08); }
+  .note-label { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; color: var(--coral); margin-bottom: 10px; display: block; }
+  .note-card p { font-size: 1.02rem; line-height: 1.5; }
+  .note-card.front p { color: var(--ink); }
+  .note-card .script-tag { margin-top: 14px; font-size: 1.3rem; color: var(--teal); }
+  .hero-sparkle-big { position: absolute; top: -10px; right: 10px; width: 46px; height: 46px; color: var(--gold); animation: twinkle 3.2s ease-in-out infinite; }
+
+  @media (max-width: 880px) {
+    .hero .wrap { grid-template-columns: 1fr; }
+    .hero { padding: 64px 0 0; }
+    .hero-visual { height: 400px; margin-top: 20px; }
+    .note-card { width: 230px; }
+    .note-card.front { left: 90px; top: 170px; }
+  }
+
+  /* CREDIBILITY BAR */
+  .cred-bar {
+    background: var(--plum); padding: 22px 0; margin-top: 70px;
+  }
+  .cred-bar .wrap {
+    display: flex; align-items: center; justify-content: center; gap: 14px;
+    flex-wrap: wrap; text-align: center;
+  }
+  .cred-item {
+    color: rgba(250,247,242,0.92); font-size: 0.92rem; font-weight: 500; letter-spacing: 0.01em;
+  }
+  .cred-dot { color: var(--gold); font-size: 0.7rem; }
+  @media (max-width: 700px) { .cred-bar .wrap { gap: 10px; } .cred-item { font-size: 0.82rem; } }
+
+  /* EARLY PHOTO MOMENT */
+  .intro-photo { background: var(--cream); padding: 80px 0; }
+  .intro-photo .wrap { display: grid; grid-template-columns: 0.7fr 1.3fr; gap: 48px; align-items: center; }
+  .intro-photo-frame { border-radius: 22px; overflow: hidden; box-shadow: 0 18px 40px rgba(78,58,90,0.14); }
+  .intro-photo-frame img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/5; }
+  .intro-photo-copy .script { font-size: 1.4rem; color: var(--coral); display: block; margin-bottom: 10px; }
+  .intro-photo-copy p { font-size: 1.1rem; color: var(--plum-soft); }
+  @media (max-width: 880px) {
+    .intro-photo .wrap { grid-template-columns: 1fr; }
+    .intro-photo-frame { max-width: 280px; margin: 0 auto; }
+  }
+
+  /* MY BELIEF */
+  .belief { background: var(--cream); }
+  .belief-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; }
+  .belief-card { background: white; border-radius: 20px; padding: 36px 30px; box-shadow: 0 10px 30px rgba(78,58,90,0.06); border: 1px solid rgba(78,58,90,0.06); transition: transform 0.25s ease, box-shadow 0.25s ease; }
+  .belief-card:hover { transform: translateY(-6px); box-shadow: 0 16px 36px rgba(78,58,90,0.1); }
+  .belief-card .sparkle { width: 1.6rem; height: 1.6rem; color: var(--gold); margin-bottom: 16px; }
+  .belief-card h3 { font-size: 1.2rem; margin-bottom: 10px; }
+  .belief-card p { color: var(--plum-soft); font-size: 0.98rem; }
+  @media (max-width: 880px) { .belief-row { grid-template-columns: 1fr; } }
+
+  /* PROBLEM */
+  .problem { background: var(--plum); color: var(--cream); }
+  .problem .section-head p { color: rgba(250,247,242,0.78); }
+  .problem .section-eyebrow { color: var(--gold); }
+  .problem h2 { color: var(--cream); }
+  .problem-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px 40px; max-width: 760px; }
+  .problem-list li { list-style: none; display: flex; gap: 14px; font-size: 1.02rem; color: rgba(250,247,242,0.92); align-items: flex-start; }
+  .problem-list .sparkle { flex-shrink: 0; margin-top: 4px; color: var(--coral); width: 0.85em; height: 0.85em; }
+  @media (max-width: 700px) { .problem-list { grid-template-columns: 1fr; } }
+
+  /* WHY ME */
+  .why-me { background: white; }
+  .why-me-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+  .why-me-card {
+    background: var(--cream); border-radius: 20px; padding: 32px 30px; border: 1px solid rgba(78,58,90,0.06);
+  }
+  .why-me-card p { color: var(--plum-soft); font-size: 1.02rem; margin-bottom: 12px; }
+  .why-me-card p:last-child { margin-bottom: 0; }
+  .why-me-card .lead { color: var(--ink); font-weight: 400; }
+  .skill-stack { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+  .skill-pill {
+    background: rgba(95,168,168,0.12); border: 1px solid rgba(95,168,168,0.3); color: var(--teal);
+    padding: 8px 16px; border-radius: 999px; font-size: 0.88rem; font-weight: 500;
+  }
+  @media (max-width: 880px) { .why-me-layout { grid-template-columns: 1fr; } }
+
+  /* METHOD */
+  .method { background: var(--cream); }
+  .method-layout { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: 56px; align-items: center; }
+  .method-photo { border-radius: 22px; overflow: hidden; box-shadow: 0 20px 44px rgba(78,58,90,0.14); position: relative; }
+  .method-photo img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/5; }
+  .method-photo-caption {
+    position: absolute; bottom: 0; left: 0; right: 0; padding: 20px 22px;
+    background: linear-gradient(to top, rgba(78,58,90,0.85), transparent);
+    color: var(--cream); font-family: 'Caveat', cursive; font-size: 1.2rem;
+  }
+  .method-steps { display: flex; flex-direction: column; gap: 28px; }
+  .method-step { display: flex; gap: 20px; }
+  .method-step .step-mark {
+    width: 52px; height: 52px; border-radius: 50%; background: var(--plum); color: var(--cream);
+    font-family: 'Lora', serif; font-weight: 700; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .method-step h3 { font-size: 1.15rem; margin-bottom: 6px; }
+  .method-step p { color: var(--plum-soft); font-size: 0.97rem; }
+  @media (max-width: 880px) {
+    .method-layout { grid-template-columns: 1fr; }
+    .method-photo img { aspect-ratio: 16/10; }
+  }
+
+  /* WHAT CHANGES */
+  .walkaway { background: var(--plum); color: var(--cream); }
+  .walkaway .section-eyebrow { color: var(--gold); }
+  .walkaway h2 { color: var(--cream); }
+  .walkaway .section-head p { color: rgba(250,247,242,0.78); }
+  .walkaway-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+  .walkaway-item {
+    background: rgba(250,247,242,0.06); border: 1px solid rgba(250,247,242,0.14); border-radius: 16px;
+    padding: 28px 26px;
+  }
+  .walkaway-item .sparkle { color: var(--gold); width: 1.3rem; height: 1.3rem; margin-bottom: 12px; display: block; }
+  .walkaway-item h3 { color: var(--cream); font-size: 1.08rem; margin-bottom: 8px; }
+  .walkaway-item p { color: rgba(250,247,242,0.8); font-size: 0.95rem; }
+  @media (max-width: 760px) { .walkaway-grid { grid-template-columns: 1fr; } }
+
+  /* WHO THIS IS FOR */
+  .fit { background: var(--cream); }
+  .fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .fit-card { border-radius: 20px; padding: 40px 36px; }
+  .fit-card.yes { background: rgba(95,168,168,0.12); border: 1.5px solid rgba(95,168,168,0.3); }
+  .fit-card.no { background: rgba(78,58,90,0.04); border: 1.5px solid rgba(78,58,90,0.1); }
+  .fit-card h3 { font-size: 1.3rem; margin-bottom: 22px; }
+  .fit-card.yes h3 { color: var(--teal); }
+  .fit-card.no h3 { color: var(--plum-soft); }
+  .fit-card ul { list-style: none; }
+  .fit-card li { display: flex; gap: 12px; margin-bottom: 16px; font-size: 1rem; color: var(--ink); align-items: flex-start; }
+  .fit-card .mark { flex-shrink: 0; font-weight: 700; margin-top: 1px; }
+  .fit-card.yes .mark { color: var(--teal); }
+  .fit-card.no .mark { color: var(--coral); }
+  .fit-tagline { text-align: center; margin-top: 48px; font-family: 'Caveat', cursive; font-size: 1.6rem; color: var(--plum); }
+  @media (max-width: 760px) { .fit-grid { grid-template-columns: 1fr; } }
+
+  /* ABOUT JEN */
+  .founder { background: white; }
+  .founder .wrap { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: center; }
+  .founder-portrait { width: 100%; border-radius: 24px; position: relative; overflow: hidden; box-shadow: 0 20px 44px rgba(78,58,90,0.16); }
+  .founder-portrait img { width: 100%; height: 100%; object-fit: cover; aspect-ratio: 4/5; }
+  .founder-portrait .sparkle { position: absolute; bottom: 18px; right: 18px; width: 2.1rem; height: 2.1rem; color: var(--gold); filter: drop-shadow(0 2px 6px rgba(0,0,0,0.25)); }
+  .founder-copy .section-eyebrow { margin-bottom: 4px; }
+  .founder-copy h2 { margin-bottom: 18px; }
+  .founder-copy p { color: var(--plum-soft); font-size: 1.05rem; margin-bottom: 16px; max-width: 580px; }
+  .founder-copy p.standout {
+    color: var(--plum); font-style: italic; font-family: 'Lora', serif; font-size: 1.15rem;
+    border-left: 3px solid var(--coral); padding-left: 18px; margin: 24px 0;
+  }
+  .founder-social { display: flex; gap: 18px; margin-top: 24px; }
+  .founder-social a {
+    width: 42px; height: 42px; border-radius: 50%; background: rgba(78,58,90,0.06);
+    display: flex; align-items: center; justify-content: center; color: var(--plum);
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  }
+  .founder-social a:hover { background: var(--coral); color: var(--cream); transform: translateY(-2px); }
+  .founder-social svg { width: 19px; height: 19px; }
+  @media (max-width: 880px) {
+    .founder .wrap { grid-template-columns: 1fr; }
+    .founder-portrait { max-width: 320px; margin: 0 auto; }
+  }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--cream); }
+  .testimonial-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .testimonial-card { background: white; border-radius: 22px; padding: 40px 38px; box-shadow: 0 10px 30px rgba(78,58,90,0.07); border: 1px solid rgba(78,58,90,0.06); position: relative; }
+  .testimonial-card .sparkle { width: 2rem; height: 2rem; color: var(--gold); margin-bottom: 18px; display: block; }
+  .testimonial-headline { font-family: 'Lora', serif; font-size: 1.15rem; color: var(--plum); margin-bottom: 14px; font-weight: 600; }
+  .testimonial-card p.body { color: var(--ink); font-size: 1rem; margin-bottom: 22px; }
+  .testimonial-attrib .name { font-weight: 600; color: var(--plum); font-size: 0.95rem; }
+  .testimonial-attrib .role { color: var(--plum-soft); font-size: 0.85rem; }
+  @media (max-width: 760px) { .testimonial-grid { grid-template-columns: 1fr; } }
+
+  /* FAQ */
+  .faq { background: white; }
+  .faq-list { max-width: 760px; }
+  .faq-item { border-bottom: 1px solid rgba(78,58,90,0.1); padding: 26px 0; }
+  .faq-item summary {
+    font-family: 'Lora', serif; font-weight: 600; color: var(--plum); font-size: 1.08rem;
+    cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary .plus {
+    flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: rgba(242,107,107,0.12);
+    color: var(--coral); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 600;
+    transition: transform 0.25s ease;
+  }
+  .faq-item[open] summary .plus { transform: rotate(45deg); }
+  .faq-item p { color: var(--plum-soft); margin-top: 14px; font-size: 0.99rem; max-width: 660px; }
+
+  /* FINAL STATEMENT */
+  .final-statement { background: var(--plum); color: var(--cream); text-align: center; padding: 110px 0 90px; }
+  .final-statement .script { color: var(--gold); font-size: 1.5rem; display: block; margin-bottom: 18px; }
+  .final-statement h2 { color: var(--cream); font-size: clamp(2rem, 3.6vw, 2.7rem); max-width: 760px; margin: 0 auto; }
+
+  /* CONTACT */
+  .contact { background: var(--plum); color: var(--cream); position: relative; overflow: hidden; padding-top: 50px; }
+  .contact::before, .contact::after { content: ''; position: absolute; border-radius: 50%; opacity: 0.12; }
+  .contact::before { width: 360px; height: 360px; background: var(--coral); top: -160px; left: -100px; }
+  .contact::after { width: 280px; height: 280px; background: var(--teal); bottom: -140px; right: -80px; }
+  .contact .wrap { position: relative; z-index: 2; }
+  .contact-head { text-align: center; max-width: 620px; margin: 0 auto 48px; }
+  .contact-head .section-eyebrow { color: var(--gold); }
+  .contact-head h2 { color: var(--cream); font-size: clamp(2rem, 3.4vw, 2.6rem); margin-bottom: 16px; }
+  .contact-head p { color: rgba(250,247,242,0.8); font-size: 1.08rem; }
+
+  .contact-form-card { background: var(--cream); color: var(--ink); border-radius: 26px; padding: 48px 44px; max-width: 640px; margin: 0 auto; box-shadow: 0 30px 60px rgba(0,0,0,0.2); position: relative; }
+  .form-row { margin-bottom: 22px; }
+  .form-row label { display: block; font-weight: 500; font-size: 0.92rem; color: var(--plum); margin-bottom: 8px; }
+  .form-row input, .form-row textarea {
+    width: 100%; font-family: 'Poppins', sans-serif; font-size: 0.98rem; color: var(--ink);
+    background: white; border: 1.5px solid rgba(78,58,90,0.16); border-radius: 12px; padding: 13px 16px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .form-row input:focus, .form-row textarea:focus { outline: none; border-color: var(--coral); box-shadow: 0 0 0 3px rgba(242,107,107,0.15); }
+  .form-row textarea { resize: vertical; min-height: 110px; }
+  .form-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  @media (max-width: 560px) { .form-grid-2 { grid-template-columns: 1fr; } }
+  .form-honeypot { position: absolute; left: -9999px; top: -9999px; }
+  .form-submit { width: 100%; justify-content: center; margin-top: 6px; font-size: 1.02rem; }
+  .form-fineprint { text-align: center; margin-top: 18px; font-family: 'Caveat', cursive; font-size: 1.1rem; color: var(--plum-soft); }
+
+  /* FOOTER */
+  footer { background: var(--cream); padding: 48px 0 40px; border-top: 1px solid rgba(78,58,90,0.08); }
+  footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+  footer .logo { font-size: 1.15rem; }
+  .footer-tagline { font-family: 'Caveat', cursive; font-size: 1.15rem; color: var(--plum-soft); }
+  .footer-right { display: flex; align-items: center; gap: 26px; flex-wrap: wrap; }
+  .footer-links { display: flex; gap: 24px; font-size: 0.9rem; color: var(--plum-soft); }
+  .footer-links a:hover { color: var(--coral); }
+  .footer-social { display: flex; gap: 14px; }
+  .footer-social a {
+    width: 36px; height: 36px; border-radius: 50%; background: rgba(78,58,90,0.06);
+    display: flex; align-items: center; justify-content: center; color: var(--plum);
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .footer-social a:hover { background: var(--coral); color: var(--cream); }
+  .footer-social svg { width: 16px; height: 16px; }
+  .footer-bottom-row {
+    border-top: 1px solid rgba(78,58,90,0.08); margin-top: 32px; padding-top: 24px;
+    text-align: center; font-size: 0.82rem; color: var(--plum-soft);
+  }
+  .footer-bottom-row a { text-decoration: underline; }
+  .footer-bottom-row a:hover { color: var(--coral); }
+</style>
+</head>
+<body>
+
+<nav id="site-nav">
+  <div class="wrap">
+    <a href="#top" class="logo">Social<span class="magic-word">Magic</span><span class="with-jen">with jen</span></a>
+    <div class="nav-links">
+      <a href="#method">The Method</a>
+      <a href="#fit">Is This You?</a>
+      <a href="#about">About Jen</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#contact" class="nav-cta">Let's Get Started</a>
+    <button type="button" class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-mobile-panel">
+      <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="6" y1="18" x2="18" y2="6"/></svg>
+    </button>
+  </div>
+  <div class="nav-mobile-panel" id="nav-mobile-panel">
+    <a href="#method">The Method</a>
+    <a href="#fit">Is This You?</a>
+    <a href="#about">About Jen</a>
+    <a href="#faq">FAQ</a>
+    <a href="#contact">Let's Get Started</a>
+  </div>
+</nav>
+
+<script is:inline>
+  (function () {
+    const nav = document.getElementById('site-nav');
+    const toggle = document.getElementById('nav-toggle');
+    const panel = document.getElementById('nav-mobile-panel');
+
+    if (!nav || !toggle || !panel) return;
+
+    const closeMenu = () => {
+      nav.classList.remove('menu-open');
+      toggle.setAttribute('aria-expanded', 'false');
+      toggle.setAttribute('aria-label', 'Open menu');
+    };
+
+    const openMenu = () => {
+      nav.classList.add('menu-open');
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.setAttribute('aria-label', 'Close menu');
+    };
+
+    toggle.addEventListener('click', () => {
+      if (nav.classList.contains('menu-open')) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    });
+
+    // Close the menu after tapping any link inside it
+    panel.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu);
+    });
+
+    // Close on Escape for keyboard users
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMenu();
+    });
+  })();
+</script>
+
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow-tag">marketing should feel like your business</span>
+      <h1>Build a marketing system that sounds like <span class="reveal-word">you<span class="sparkle">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg>
+      </span></span>, not everyone else.</h1>
+      <p class="hero-sub">You didn't start your business to become a marketer. I help women-owned service businesses uncover what makes them remarkable, organize it into a system, and teach AI to amplify their story instead of replacing it.</p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Book a Brand MAGIC Session</a>
+        <a href="#method" class="btn-secondary">See how it works</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <span class="hero-sparkle-big">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg>
+      </span>
+      <div class="note-card back">
+        <span class="note-label">Before</span>
+        <p>Staring at a blank screen, wondering what to post. AI that sounds like everyone else.</p>
+      </div>
+      <div class="note-card front">
+        <span class="note-label">After</span>
+        <p>Opening a workspace that already knows your voice, your audience, your story.</p>
+        <span class="script-tag">That's the magic.</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="cred-bar">
+  <div class="wrap">
+    <span class="cred-item">10+ Years of Growth Marketing</span>
+    <span class="cred-dot">&#10022;</span>
+    <span class="cred-item">Chief Growth Officer</span>
+    <span class="cred-dot">&#10022;</span>
+    <span class="cred-item">AI Workflow Strategist</span>
+    <span class="cred-dot">&#10022;</span>
+    <span class="cred-item">Storytelling Obsessed</span>
+  </div>
+</div>
+
+<section class="intro-photo">
+  <div class="wrap">
+    <div class="intro-photo-frame">
+      <img src="/images/jen-laptop.jpg" alt="Jen Sanders working at her laptop, smiling">
+    </div>
+    <div class="intro-photo-copy">
+      <span class="script">hi, i'm jen &mdash; nice to meet you</span>
+      <p>I built Social Magic because I believe people hire people, not templates. Everything on this page &mdash; the strategy, the AI, the systems &mdash; starts with an actual conversation between us.</p>
+    </div>
+  </div>
+</section>
+
+<section class="belief" id="belief">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">what i believe</span>
+      <h2>AI isn't the magic. Understanding your business is.</h2>
+      <p>Before we ever write a prompt, we uncover what makes your business unique. These beliefs guide every decision we make together.</p>
+    </div>
+    <div class="belief-row">
+      <div class="belief-card">
+        <span class="sparkle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg></span>
+        <h3>Your story is your advantage</h3>
+        <p>You don't need to become someone else to grow your business. Your story, told clearly, is the most competitive thing you own.</p>
+      </div>
+      <div class="belief-card">
+        <span class="sparkle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg></span>
+        <h3>AI should amplify, never replace</h3>
+        <p>When AI truly understands your voice, your customers, and your expertise, it becomes a partner &mdash; not a replacement for you.</p>
+      </div>
+      <div class="belief-card">
+        <span class="sparkle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg></span>
+        <h3>Trust comes before the ask</h3>
+        <p>Marketing should feel like a conversation, not a performance. The best marketing builds trust before it asks for a sale.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="problem" id="problem">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">if this sounds familiar...</span>
+      <h2>You're great at your work. Marketing wasn't supposed to be the hard part.</h2>
+      <p>Somewhere along the way, it became another job on top of your job.</p>
+    </div>
+    <ul class="problem-list">
+      <li><span class="sparkle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg></span>You're overwhelmed by marketing and never sure what to post.</li>
+      <li><span class="sparkle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg></span>You've tried AI, prompts, and templates &mdash; nothing sounds like you.</li>
+      <li><span class="sparkle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg></span>Marketing always gets pushed aside because serving clients comes first.</li>
+      <li><span class="sparkle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg></span>Your story lives in your head instead of in a system.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="why-me" id="why-me">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">why work with me</span>
+      <h2>There are plenty of people teaching prompts. There aren't many who understand the whole picture.</h2>
+    </div>
+    <div class="why-me-layout">
+      <div class="why-me-card">
+        <p class="lead">There are plenty of people teaching prompts.</p>
+        <p class="lead">There are plenty of people building AI tools.</p>
+        <p>There aren't many people who understand branding, marketing, storytelling, leadership, and AI &mdash; all at once.</p>
+        <p><strong style="color: var(--plum); font-weight: 600;">That's where I come in.</strong></p>
+        <p>I don't start with ChatGPT. I start with you.</p>
+      </div>
+      <div>
+        <p style="font-size: 1.05rem; color: var(--plum-soft); margin-bottom: 20px;">A decade of building brands and growth strategy, now applied to AI &mdash; so the technology fits your business instead of flattening it.</p>
+        <div class="skill-stack">
+          <span class="skill-pill">Brand Strategy</span>
+          <span class="skill-pill">Storytelling</span>
+          <span class="skill-pill">Growth Marketing</span>
+          <span class="skill-pill">AI Workflows</span>
+          <span class="skill-pill">Leadership</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="method" id="method">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">the brand magic method</span>
+      <h2>Clarity before content. Every time.</h2>
+      <p>Most people start with AI. We start with your story &mdash; then we teach AI to tell it.</p>
+    </div>
+    <div class="method-layout">
+      <div class="method-photo">
+        <img src="/images/jen-stickynotes.jpg" alt="Jen mapping out a content strategy on sticky notes during a Discover session">
+        <div class="method-photo-caption">This is what the Discover step actually looks like.</div>
+      </div>
+      <div class="method-steps">
+        <div class="method-step">
+          <div class="step-mark">1</div>
+          <div><h3>Discover</h3><p>We start with a real conversation &mdash; your story, your values, your customers, what makes you different.</p></div>
+        </div>
+        <div class="method-step">
+          <div class="step-mark">2</div>
+          <div><h3>Define</h3><p>We organize everything that makes your business uniquely yours: your voice, message, audience, and expertise.</p></div>
+        </div>
+        <div class="method-step">
+          <div class="step-mark">3</div>
+          <div><h3>Build</h3><p>Together we create your Brand MAGIC Guide &mdash; the operating manual for your marketing going forward.</p></div>
+        </div>
+        <div class="method-step">
+          <div class="step-mark">4</div>
+          <div><h3>Teach &amp; Shine</h3><p>I build your custom AI workspace so it creates marketing that sounds like you. You leave with confidence and a system you'll actually use.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="walkaway" id="walkaway">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">what changes after we work together</span>
+      <h2>This isn't about more content. It's about what's different in your business.</h2>
+      <p>Real shifts, not just deliverables sitting in a folder.</p>
+    </div>
+    <div class="walkaway-grid">
+      <div class="walkaway-item">
+        <span class="sparkle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg></span>
+        <h3>You stop guessing what to post</h3>
+        <p>You'll have a clear system and a content strategy built specifically around your business, not a generic calendar.</p>
+      </div>
+      <div class="walkaway-item">
+        <span class="sparkle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg></span>
+        <h3>Your AI finally sounds like you</h3>
+        <p>Your custom AI workspace understands your voice, your audience, and your story &mdash; so nothing reads generic again.</p>
+      </div>
+      <div class="walkaway-item">
+        <span class="sparkle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg></span>
+        <h3>You get hours back every week</h3>
+        <p>Marketing stops competing with serving your clients, because the system runs without you starting from scratch each time.</p>
+      </div>
+      <div class="walkaway-item">
+        <span class="sparkle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg></span>
+        <h3>You feel proud of how you show up</h3>
+        <p>What you post finally feels like an honest reflection of your business, not a performance you're putting on.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="fit" id="fit">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="section-eyebrow">is this you?</span>
+      <h2>The magic isn't in the prompts. It's in the clarity we create together.</h2>
+    </div>
+    <div class="fit-grid">
+      <div class="fit-card yes">
+        <h3>This is for you if...</h3>
+        <ul>
+          <li><span class="mark">&#10003;</span>You're a woman-owned service business.</li>
+          <li><span class="mark">&#10003;</span>You know marketing matters but never know what to post.</li>
+          <li><span class="mark">&#10003;</span>AI has left you frustrated because nothing sounds like you.</li>
+          <li><span class="mark">&#10003;</span>You want a system that saves time without sacrificing authenticity.</li>
+          <li><span class="mark">&#10003;</span>You're ready to stop guessing and show up with confidence.</li>
+        </ul>
+      </div>
+      <div class="fit-card no">
+        <h3>This probably isn't for you if...</h3>
+        <ul>
+          <li><span class="mark">&#10005;</span>You're looking for overnight growth hacks.</li>
+          <li><span class="mark">&#10005;</span>You want AI to replace your voice.</li>
+          <li><span class="mark">&#10005;</span>You're searching for generic prompts or templates.</li>
+          <li><span class="mark">&#10005;</span>You aren't ready to invest time understanding your business first.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="fit-tagline">"AI isn't the solution. Clarity is." &mdash; Jen</p>
+  </div>
+</section>
+
+<section class="founder" id="about">
+  <div class="wrap">
+    <div class="founder-portrait">
+      <img src="/images/jen-portrait.jpg" alt="Jen Sanders, founder of Social Magic with Jen, seated and smiling">
+      <span class="sparkle">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg>
+      </span>
+    </div>
+    <div class="founder-copy">
+      <span class="section-eyebrow">hi, i'm jen</span>
+      <h2>I didn't set out to work in marketing.</h2>
+      <p>I thought I'd spend my career in criminal justice. Then I found myself helping organizations tell stories that deserved to be heard.</p>
+      <p class="standout">Somewhere along the way, I realized marketing wasn't about getting attention. It was about helping the right people finally understand the value that was already there.</p>
+      <p>That's still how I approach every client today. Over the past decade, I've helped organizations tell better stories, build stronger brands, and create meaningful connections with the people they serve.</p>
+      <p>Most recently, I've been building AI-powered marketing systems that save time without sacrificing authenticity &mdash; and now I'm bringing those same ideas to the small businesses that deserve them most, because great marketing shouldn't only be available to companies with big budgets.</p>
+      <div class="founder-social">
+        <a href="https://www.instagram.com/socialmagicwithjen/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/jenniferlsanders" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.94 6 2.5 6S0 4.88 0 3.5 1.04 1 2.5 1 4.98 2.12 4.98 3.5zM.18 8.5h4.64V23H.18V8.5zM8.34 8.5h4.45v1.98h.06c.62-1.18 2.14-2.42 4.4-2.42 4.7 0 5.57 3.1 5.57 7.12V23h-4.64v-6.84c0-1.63-.03-3.73-2.28-3.73-2.28 0-2.63 1.78-2.63 3.61V23H8.34V8.5z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/socialmagicwithjen/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.13 8.44 9.88v-6.99H7.9v-2.89h2.54V9.79c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.89h-2.34V22c4.78-.75 8.44-4.88 8.44-9.94z"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials" id="testimonials">
+  <div class="wrap">
+    <div class="section-head center">
+      <span class="section-eyebrow">kind words</span>
+      <h2>Hear it from the businesses I've worked with.</h2>
+    </div>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <span class="sparkle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg></span>
+        <p class="testimonial-headline">Jen doesn't just teach social media &mdash; she transforms how you show up online.</p>
+        <p class="body">Working with her was a total game-changer for my business. She took my scattered ideas, turned them into a clear strategy, and made social media actually work for me. If you want someone who gets marketing, brings the energy, and makes the process seamless, Jen's your person.</p>
+        <div class="testimonial-attrib">
+          <div class="name">D.K.</div>
+          <div class="role">Founder, High-Vibe Entrepreneur</div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <span class="sparkle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg></span>
+        <p class="testimonial-headline">She made our mission stand out and truly resonate.</p>
+        <p class="body">Jen helped us develop a clear, consistent brand across all platforms, making sure our mission not only stood out but also deeply resonated with the people we serve. Her strategic approach brought alignment across our messaging, visuals, and marketing efforts, allowing us to expand our reach and impact.</p>
+        <div class="testimonial-attrib">
+          <div class="name">J.A.</div>
+          <div class="role">CEO, Nonprofit Organization</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="section-eyebrow">questions, answered</span>
+      <h2>Before you reach out, here's what people usually want to know.</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>Do I need to know AI to work with you? <span class="plus">+</span></summary>
+        <p>Not at all. Most of my clients have never written a prompt before we start. I build the system and teach you how to use it &mdash; you don't need any prior experience.</p>
+      </details>
+      <details class="faq-item">
+        <summary>How long does Brand MAGIC take? <span class="plus">+</span></summary>
+        <p>Every business is different, but most clients move through the full process &mdash; Discover, Define, Build, Teach, and Shine &mdash; over a few focused weeks rather than months.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do you write my content for me? <span class="plus">+</span></summary>
+        <p>I build the system and teach the AI to sound like you, but the goal is for you to create content confidently on your own afterward &mdash; not to hand your voice over to someone else.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Can I use ChatGPT instead of Claude? <span class="plus">+</span></summary>
+        <p>Yes. The Brand MAGIC Guide and AI Knowledge Base are built to work with either Claude or ChatGPT, so you can use whichever tool you're most comfortable with.</p>
+      </details>
+      <details class="faq-item">
+        <summary>What happens after the session? <span class="plus">+</span></summary>
+        <p>You'll walk away with your Brand MAGIC Guide, Brand Voice Guide, custom AI workspace, prompt library, and a 30-day content strategy &mdash; plus a training session so you know exactly how to use it all.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Is this only for women-owned businesses? <span class="plus">+</span></summary>
+        <p>I built Social Magic specifically with women-owned service businesses in mind, and that's who I love working with most. If that's not you but you connect with the philosophy here, feel free to reach out and we can talk it through.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="final-statement">
+  <div class="wrap">
+    <span class="script">one last thing</span>
+    <h2>Marketing shouldn't feel like another full-time job. Let's build a system that lets you spend more time doing what you love and less time wondering what to post.</h2>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-head">
+      <span class="section-eyebrow">let's talk</span>
+      <h2>Ready to tell your story in a way that finally feels like you?</h2>
+      <p>Share your name and email below, and I'll reach out personally.</p>
+    </div>
+
+    <form name="brand-magic-inquiry" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you" class="contact-form-card">
+      <input type="hidden" name="form-name" value="brand-magic-inquiry">
+      <p class="form-honeypot">
+        <label>Don't fill this out if you're human: <input name="bot-field"></label>
+      </p>
+
+      <div class="form-grid-2">
+        <div class="form-row">
+          <label for="first-name">First name</label>
+          <input type="text" id="first-name" name="first-name" required>
+        </div>
+        <div class="form-row">
+          <label for="email">Email address</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label for="business-name">Business name</label>
+        <input type="text" id="business-name" name="business-name" required>
+      </div>
+
+      <div class="form-row">
+        <label for="website">Website or Instagram URL <span style="color: var(--plum-soft); font-weight: 400;">(optional)</span></label>
+        <input type="text" id="website" name="website">
+      </div>
+
+      <div class="form-row">
+        <label for="message">Tell me what you're hoping to get help with.</label>
+        <textarea id="message" name="message" required></textarea>
+      </div>
+
+      <button type="submit" class="btn-primary form-submit">Let's Find Your Brand Magic</button>
+      <p class="form-fineprint">I read every single message myself &mdash; no bots, no auto-replies.</p>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="#top" class="logo">Social<span class="magic-word">Magic</span><span class="with-jen">with jen</span></a>
+    <span class="footer-tagline">marketing that sounds like you, not everyone else</span>
+    <div class="footer-right">
+      <div class="footer-links">
+        <a href="#method">The Method</a>
+        <a href="#fit">Is This You?</a>
+        <a href="#contact">Let's Get Started</a>
+      </div>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/socialmagicwithjen/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="17.2" cy="6.8" r="0.6" fill="currentColor"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/jenniferlsanders" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.94 6 2.5 6S0 4.88 0 3.5 1.04 1 2.5 1 4.98 2.12 4.98 3.5zM.18 8.5h4.64V23H.18V8.5zM8.34 8.5h4.45v1.98h.06c.62-1.18 2.14-2.42 4.4-2.42 4.7 0 5.57 3.1 5.57 7.12V23h-4.64v-6.84c0-1.63-.03-3.73-2.28-3.73-2.28 0-2.63 1.78-2.63 3.61V23H8.34V8.5z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/socialmagicwithjen/" target="_blank" rel="noopener" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.13 8.44 9.88v-6.99H7.9v-2.89h2.54V9.79c0-2.5 1.49-3.89 3.78-3.89 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.87h2.78l-.44 2.89h-2.34V22c4.78-.75 8.44-4.88 8.44-9.94z"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom-row wrap" style="margin-top: 0;">
+      &copy; 2026 Social Magic with Jen. All rights reserved. &nbsp;&middot;&nbsp;
+      <a href="/terms">Terms of Use</a> &nbsp;&middot;&nbsp;
+      <a href="/privacy">Privacy Policy</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
