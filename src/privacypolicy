@@ -1,0 +1,155 @@
+---
+// Static legal page — no server-side data needed.
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy | Social Magic with Jen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Poppins:wght@300;400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #faf7f2;
+    --plum: #4e3a5a;
+    --plum-soft: #6b5380;
+    --coral: #f26b6b;
+    --coral-deep: #e1504f;
+    --teal: #5fa8a8;
+    --gold: #d9a441;
+    --ink: #3a2c45;
+    --max: 800px;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--cream); color: var(--ink); font-family: 'Poppins', sans-serif;
+    font-weight: 300; line-height: 1.75; -webkit-font-smoothing: antialiased;
+  }
+  a { text-decoration: none; color: var(--coral); }
+  a:hover { color: var(--coral-deep); }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+
+  nav {
+    background: rgba(250, 247, 242, 0.92); backdrop-filter: blur(6px);
+    border-bottom: 1px solid rgba(78, 58, 90, 0.08); position: sticky; top: 0; z-index: 10;
+  }
+  nav .wrap { max-width: 1180px; display: flex; align-items: center; justify-content: space-between; height: 84px; }
+  .logo { font-family: 'Lora', serif; font-weight: 700; font-size: 1.5rem; color: var(--plum); display: flex; align-items: baseline; gap: 8px; }
+  .logo .magic-word { color: var(--coral); }
+  .logo .with-jen { font-family: 'Caveat', cursive; font-weight: 600; font-size: 1.1rem; color: var(--gold); }
+  .back-link { font-size: 0.92rem; font-weight: 500; color: var(--plum); }
+  .back-link:hover { color: var(--coral); }
+
+  .doc-header { padding: 70px 0 30px; }
+  .doc-header .eyebrow { font-family: 'Caveat', cursive; font-size: 1.3rem; color: var(--coral); display: block; margin-bottom: 8px; }
+  .doc-header h1 { font-family: 'Lora', serif; color: var(--plum); font-size: clamp(2rem, 4vw, 2.6rem); margin-bottom: 10px; }
+  .doc-header .updated { color: var(--plum-soft); font-size: 0.95rem; }
+
+  .doc-body { padding: 10px 0 100px; }
+  .doc-body p { color: var(--ink); margin-bottom: 22px; font-size: 1.02rem; }
+  .doc-body strong { color: var(--plum); font-weight: 600; }
+  .doc-body a { word-break: break-word; }
+  .doc-body ul { margin: 0 0 22px 22px; padding: 0; }
+  .doc-body li { color: var(--ink); margin-bottom: 8px; font-size: 1.02rem; }
+
+  footer { background: var(--cream); border-top: 1px solid rgba(78,58,90,0.08); padding: 36px 0; }
+  footer .wrap { max-width: 1180px; text-align: center; font-size: 0.85rem; color: var(--plum-soft); }
+  footer a { color: var(--plum-soft); text-decoration: underline; }
+  footer a:hover { color: var(--coral); }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="/" class="logo">Social<span class="magic-word">Magic</span><span class="with-jen">with jen</span></a>
+    <a href="/" class="back-link">&larr; Back to Home</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="doc-header">
+    <span class="eyebrow">how we handle your information</span>
+    <h1>Privacy Policy</h1>
+    <p class="updated">Last Updated March 5, 2025</p>
+  </div>
+
+  <div class="doc-body">
+    <p>We are so happy you found your way to our corner of the internet. Thank you for becoming a part of our online community at Social Magic with Jen ("Company," "we," "us," "our"). As you browse our Website, please know that we respect your privacy and are committed to protecting it through this Privacy Policy ("Policy").</p>
+
+    <p>This policy lays out how we may collect, store, use, and share any information that we gather from you when you access and use our Website www.socialmagicwithjen.com ("Website").</p>
+
+    <p>Please review this Privacy Policy very carefully. By accessing our website, you are agreeing to this and are expressing that you have been given reasonable access to review this Policy prior to your continued use of our Website. This Agreement is binding as of the date you access our Website.</p>
+
+    <p><strong>Privacy Policy Purpose.</strong> We want to be open and transparent in communicating how your data and information may be collected. This is the best way to ensure you are informed when browsing our Website or interacting with our Company on other related platforms. This summary will give you a clear understanding of where our privacy policy applies, where it does not apply, and how it is updated over time.</p>
+
+    <p>Our policy governs any information we may gather:</p>
+    <ul>
+      <li>Through our Website.</li>
+      <li>Through any chat, user submission, and electronic messaging features on the Website.</li>
+      <li>Through email or newsletter opt-ins, text, or other marketing features you interact with on the Website.</li>
+      <li>Through any downloadable products or features on this Website.</li>
+      <li>Through your interaction with any of our advertisements including those on third-party websites, applications and services.</li>
+    </ul>
+
+    <p>Our policy does not govern any data or information we collect that is gathered offline. The Company has no control over data or information gathered by any third-party websites or partners we may link to, including affiliates.</p>
+
+    <p>Should you not agree to any provision of our Company's policy you will no longer use, navigate, access or browse our Website. By continuing to use our Website you are agreeing to the practices we lay out in this policy.</p>
+
+    <p><strong>Age Requirements.</strong> We do not knowingly collect personal information from children under 16 years of age for any reason or in any circumstance. No one under the age of 16 may access, use, create an account, make any purchases, or provide any information through our Website without verified parental consent.</p>
+
+    <p>In the event we are made aware that we unknowingly gathered personal information or data from an individual under the age of 16, we will promptly delete any related data. Should you have cause to believe we have gathered such data, please email us at <a href="mailto:socialmagicwithjen@gmail.com">socialmagicwithjen@gmail.com</a>. Thank you in advance for helping us stay proactive in the data collection process.</p>
+
+    <p><strong>Collected Information.</strong> As you browse and navigate our Website, some of your personal information will be automatically collected.</p>
+
+    <p>We want you to understand what types of personal information we collect and how it is typically collected.</p>
+
+    <p>We hope this clarity eliminates any confusion around our data collection processes so you can have full confidence in browsing our Website and interacting with our Company.</p>
+
+    <p>Information we collect include the following categories and kinds of personal information:</p>
+    <ul>
+      <li>Contact information including full name, address, email address and phone numbers;</li>
+      <li>Financial Information including credit and debit card and bank account information;</li>
+      <li>Geolocation information;</li>
+      <li>Demographic information including gender, age, employment information;</li>
+      <li>Internet and website usage data;</li>
+      <li>Other identifying information such as IP address, social media usernames, passwords and other information used for authentication and access;</li>
+      <li>Your videos and photos;</li>
+      <li>Your consumer profile data.</li>
+    </ul>
+
+    <p>This information and data is collected when you provide it to us or automatically as you browse our Website. Your information may also be collected from third parties such as our business partners.</p>
+
+    <p><strong>Sources of Information.</strong> By engaging with our Website, you have an opportunity to provide us with personal information about you through forms, surveys, etc.</p>
+
+    <p>Before you give us information, it is important to pay attention to what information is required and what is optional. By providing us with your information, you agree that it is correct, personal to you (and no one else whose permission has not been given), and complete.</p>
+
+    <p>Your information may come from the following sources:</p>
+    <ul>
+      <li>Directly from you &mdash; for example, when you create an account, sign up for a newsletter, contact our Company, submit correspondence or inquiries to our Company through the Website or purchase a product.</li>
+      <li>From third-parties &mdash; for example such as data vaults, data shares, and/or social media sites.</li>
+      <li>Passive data collection processes that use such tools like cookies.</li>
+    </ul>
+
+    <p>Website users may also post or submit content ("Submissions") on the Website including, but not limited to reviews, comments, testimonials, and discussions.</p>
+
+    <p>We really appreciate when our customers and Website users give us an opportunity to use their posted submissions and information to promote our products/services, enhance our user's experience, and reach a new audience. We could not effectively reach and serve new audiences without their public support and brand advocacy!</p>
+
+    <p>However, please keep in mind that your submissions are transmitted to our Website and disseminated to others at your own risk. The Company has no control over how other third-parties and users interact with your submissions. Please remember this before posting your submissions on our Website.</p>
+
+    <p>For any questions, updates, or requests regarding this policy, please email us at <a href="mailto:jennifer@socialmagicwithjen.com">jennifer@socialmagicwithjen.com</a>.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    &copy; 2026 Social Magic with Jen. All rights reserved. &nbsp;&middot;&nbsp;
+    <a href="/terms/">Terms of Use</a> &nbsp;&middot;&nbsp;
+    <a href="/privacy/">Privacy Policy</a>
+  </div>
+</footer>
+
+</body>
+</html>
