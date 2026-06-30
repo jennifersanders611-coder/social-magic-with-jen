@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block the form success page from being indexed
+Disallow: /thank-you/
+
+# Sitemap location
+Sitemap: https://socialmagicwithjen.com/sitemap.xml
