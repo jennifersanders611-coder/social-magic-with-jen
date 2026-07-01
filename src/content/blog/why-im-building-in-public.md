@@ -1,7 +1,7 @@
 ---
 title: "Why I'm Building This in Public"
 description: "A year inside corporate AI taught me something small businesses deserve to have too. Here's the story behind this whole series."
-publishDate: 2026-07-01
+publishDate: 2026-07-02
 author: Jen
 tags: ["build in public", "marketing systems", "AI", "small business"]
 image: ""
