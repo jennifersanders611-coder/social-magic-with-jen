@@ -1,80 +1,328 @@
----
-// Static thank-you / form-success page — no server-side data needed.
----
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thank You | Social Magic with Jen</title>
-<meta name="robots" content="noindex, nofollow">
-<link rel="canonical" href="https://socialmagicwithjen.com/thank-you/">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<title>You're in! | Social Magic with Jen</title>
+<meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Poppins:wght@300;400;500&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Poppins:wght@400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --cream: #faf7f2;
     --plum: #4e3a5a;
-    --plum-soft: #6b5380;
     --coral: #f26b6b;
-    --coral-deep: #e1504f;
     --teal: #5fa8a8;
     --gold: #d9a441;
+    --ink: #3a3a3a;
   }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  * { box-sizing: border-box; }
+
   body {
-    background: var(--cream);
-    font-family: 'Poppins', sans-serif;
-    color: var(--plum);
+    margin: 0;
+    padding: 0;
+    background-color: var(--cream);
+    font-family: 'Poppins', Arial, sans-serif;
+    color: var(--ink);
+  }
+
+  .wrap {
     min-height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 32px;
   }
+
+  /* Header band */
+  .header {
+    width: 100%;
+    background-color: var(--plum);
+    padding: 26px 24px 60px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .logo-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .logo {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+  }
+
+  .logo span { color: var(--coral); }
+
+  .tagline {
+    font-family: 'Caveat', cursive;
+    font-size: 20px;
+    color: var(--gold);
+    margin: 0;
+  }
+
+  /* Signature sparkle accent */
+  .sparkle-hero {
+    margin-top: 14px;
+    display: inline-block;
+    animation: pop-in 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s both;
+  }
+
+  .sparkle-hero svg { width: 26px; height: 26px; }
+
+  @keyframes pop-in {
+    0%   { transform: scale(0.4) rotate(-15deg); opacity: 0; }
+    100% { transform: scale(1) rotate(0deg); opacity: 1; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sparkle-hero { animation: none; }
+  }
+
+  /* Photo moment: warm, personal, overlapping header + card */
+  .photo-frame-wrap {
+    position: relative;
+    z-index: 3;
+    margin-top: -70px;
+    display: flex;
+    justify-content: center;
+    animation: pop-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.05s both;
+  }
+
+  .photo-frame {
+    width: 148px;
+    height: 148px;
+    border-radius: 50%;
+    border: 6px solid #ffffff;
+    box-shadow: 0 10px 24px rgba(78, 58, 90, 0.22);
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Card content */
   .card {
-    max-width: 520px;
+    max-width: 560px;
+    width: 100%;
+    background-color: #ffffff;
+    border-radius: 20px;
+    margin: 20px 20px 40px 20px;
+    padding: 8px 36px 40px 36px;
+    box-shadow: 0 12px 32px rgba(78, 58, 90, 0.12);
+    position: relative;
+    z-index: 2;
     text-align: center;
   }
-  .sparkle {
-    width: 48px; height: 48px; color: var(--gold); margin: 0 auto 20px; display: block;
-  }
+
   h1 {
-    font-family: 'Lora', serif;
-    font-size: 2.1rem;
-    margin-bottom: 16px;
+    font-family: 'Lora', Georgia, serif;
+    font-size: 30px;
+    color: var(--plum);
+    margin: 0 0 6px 0;
     line-height: 1.25;
   }
+
+  .subhead {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    color: var(--coral);
+    margin: 0 0 22px 0;
+  }
+
   p {
-    font-size: 1.08rem;
-    color: var(--plum-soft);
-    margin-bottom: 28px;
+    font-size: 16px;
     line-height: 1.7;
+    margin: 0 0 18px 0;
+    text-align: left;
   }
-  .script { font-family: 'Caveat', cursive; font-size: 1.3rem; color: var(--teal); display: block; margin-bottom: 24px; }
-  a.btn {
+
+  .divider {
+    border: none;
+    border-top: 1px dashed #e6dcd0;
+    margin: 28px 0;
+  }
+
+  /* Confirmation callout */
+  .confirm-box {
+    background-color: var(--cream);
+    border-left: 4px solid var(--teal);
+    border-radius: 12px;
+    padding: 22px 24px;
+    margin: 0 0 24px 0;
+    text-align: left;
+  }
+
+  .confirm-box .eyebrow {
+    font-family: 'Caveat', cursive;
+    font-size: 19px;
+    color: var(--teal);
+    margin: 0 0 6px 0;
+  }
+
+  .confirm-box h2 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 18px;
+    color: var(--plum);
+    margin: 0 0 10px 0;
+  }
+
+  .confirm-box p {
+    font-size: 15px;
+    margin: 0;
+  }
+
+  /* What's coming */
+  .whats-coming {
+    text-align: left;
+    margin-bottom: 8px;
+  }
+
+  .whats-coming h3 {
+    font-family: 'Lora', Georgia, serif;
+    font-size: 17px;
+    color: var(--plum);
+    margin: 0 0 10px 0;
+  }
+
+  /* Social buttons */
+  .social-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 24px 0 4px 0;
+  }
+
+  .social-btn {
     display: inline-block;
-    background: var(--coral);
-    color: var(--cream);
-    padding: 14px 30px;
-    border-radius: 999px;
-    text-decoration: none;
+    padding: 11px 22px;
+    border-radius: 30px;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 14px;
     font-weight: 600;
-    transition: background 0.2s ease, transform 0.2s ease;
+    color: #ffffff;
+    text-decoration: none;
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
-  a.btn:hover { background: var(--coral-deep); transform: translateY(-2px); }
+
+  .social-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+  }
+
+  .social-btn.ig { background-color: var(--coral); }
+  .social-btn.li { background-color: var(--teal); }
+  .social-btn.fb { background-color: var(--gold); }
+
+  /* Missing email section */
+  .missing-email {
+    max-width: 560px;
+    width: 100%;
+    text-align: center;
+    padding: 0 36px 56px 36px;
+  }
+
+  .missing-email p {
+    text-align: center;
+    font-size: 14px;
+    color: #7a7280;
+    margin: 0 0 14px 0;
+  }
+
+  .mail-btn {
+    display: inline-block;
+    padding: 13px 28px;
+    background-color: var(--plum);
+    color: #ffffff;
+    border-radius: 30px;
+    text-decoration: none;
+    font-family: 'Poppins', Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.15s ease;
+  }
+
+  .mail-btn:hover {
+    background-color: #3d2e48;
+  }
+
+  a:focus-visible, .social-btn:focus-visible, .mail-btn:focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  @media (max-width: 480px) {
+    .card { padding: 8px 24px 32px 24px; margin: 16px 16px 32px 16px; }
+    h1 { font-size: 25px; }
+    .missing-email { padding: 0 20px 48px 20px; }
+    .photo-frame { width: 120px; height: 120px; }
+    .photo-frame-wrap { margin-top: -58px; }
+    .header { padding: 24px 20px 50px 20px; }
+  }
 </style>
 </head>
 <body>
-  <div class="card">
-    <svg class="sparkle" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg>
-    <h1>Your story just landed in my inbox.</h1>
-    <span class="script">and I couldn't be more excited to read it</span>
-    <p>Thanks for reaching out. I read every message myself, and I'll be in touch personally within 1&ndash;2 business days.</p>
-    <a href="/" class="btn">Back to the homepage</a>
+
+<div class="wrap">
+
+  <div class="header">
+    <div class="logo-row">
+      <p class="logo">Social<span>Magic</span></p>
+      <p class="tagline">with jen</p>
+    </div>
+    <div class="sparkle-hero">
+      <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22 2 L26 18 L42 22 L26 26 L22 42 L18 26 L2 22 L18 18 Z" fill="#d9a441"/>
+      </svg>
+    </div>
   </div>
+
+  <div class="photo-frame-wrap">
+    <img src="hello-gorgeous-mug.jpg" alt="Jen holding a mug that says hello gorgeous" class="photo-frame">
+  </div>
+
+  <div class="card">
+    <h1>You're in!</h1>
+    <p class="subhead">so glad you're here &#10022;</p>
+
+    <p>Seriously, welcome. You just took the first step toward telling your story with more clarity and a lot less overwhelm, and I couldn't be happier you're here.</p>
+
+    <div class="confirm-box">
+      <p class="eyebrow">one small thing first</p>
+      <h2>Check your inbox</h2>
+      <p>I hate spam as much as you do, so I want to make sure you actually want to be here. You'll get a confirmation email any minute now. Just click the link inside, and you're officially on the list.</p>
+    </div>
+
+    <div class="whats-coming">
+      <h3>What happens next</h3>
+      <p>Once you confirm, you'll start getting The Spark: weekly tips on telling your story with clarity, building marketing systems that sound like you, and using AI as a tool that amplifies your voice, never replaces it.</p>
+    </div>
+
+    <hr class="divider">
+
+    <p style="text-align:center; margin-bottom: 10px; font-family: 'Caveat', cursive; font-size: 19px; color: var(--gold);">while you wait, let's connect &#10022;</p>
+
+    <div class="social-row">
+      <a href="https://www.instagram.com/socialmagicwithjen/" class="social-btn ig">Instagram</a>
+      <a href="https://www.linkedin.com/in/jenniferlsanders" class="social-btn li">LinkedIn</a>
+      <a href="https://www.facebook.com/socialmagicwithjen/" class="social-btn fb">Facebook</a>
+    </div>
+  </div>
+
+  <div class="missing-email">
+    <p>Didn't see the confirmation email? Check your spam folder first, then reach out directly, I'll make sure you're on the list.</p>
+    <a href="mailto:jen@socialmagicwithjen.com?subject=I%20didn%27t%20get%20my%20confirmation%20email" class="mail-btn">Email Jen Directly &rarr;</a>
+  </div>
+
+</div>
+
 </body>
 </html>
