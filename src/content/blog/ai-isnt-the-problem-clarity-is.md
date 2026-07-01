@@ -14,15 +14,15 @@ I hear from small business owners all the time who tried AI, got a wall of gener
 
 ## What most people skip
 
-The typical approach goes something like this: open a new chat, type "write me an Instagram caption about my bookkeeping services," and wait.
+Most people think better prompts create better AI.
 
-What you get back is technically a caption. It has words. It might even make sense.
+I don't.
 
-But it doesn't sound like you. It doesn't reflect what you believe about your work. It doesn't say anything that distinguishes you from every other bookkeeper writing the same prompt.
+Better marketing starts with better clarity.
 
-And the reason is simple: AI can only work with what it's given.
+When AI understands your business, your voice, your audience, and what makes you different, everything changes. Instead of creating content that could belong to anyone, it creates content that feels like it could only come from you.
 
-If you give it nothing, it fills the gaps with averages.
+That's the difference between asking AI to write for you and teaching AI to write with you.
 
 ## Clarity is the missing ingredient
 
