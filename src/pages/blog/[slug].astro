@@ -68,3 +68,109 @@ function formatDate(date: Date) {
     .back-link:hover { color: var(--plum); }
     .tag-row { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1rem; }
     .tag { font-family: 'Poppins', sans-serif; font-size: 0.68rem; font-weight: 600;
+text-transform: uppercase; letter-spacing: 0.07em; color: var(--teal); background: rgba(95,168,168,0.1); padding: 0.28rem 0.65rem; border-radius: 100px; }
+    .post-title { font-family: 'Lora', serif; font-size: clamp(1.8rem, 4.5vw, 2.6rem); color: var(--plum); line-height: 1.25; margin: 0 0 1rem; }
+    .post-description { font-family: 'Poppins', sans-serif; font-size: 1.1rem; color: #5a5a5a; line-height: 1.75; margin: 0 0 1.25rem; font-style: italic; }
+    .post-meta { font-family: 'Poppins', sans-serif; font-size: 0.82rem; color: #999; margin-bottom: 2.5rem; padding-bottom: 2.5rem; border-bottom: 1px solid rgba(78,58,90,0.1); }
+    .meta-sep { margin: 0 0.4rem; }
+    .post-content { font-family: 'Poppins', sans-serif; font-size: 1rem; line-height: 1.85; color: #3d3d3d; }
+    .post-content :global(h2) { font-family: 'Lora', serif; font-size: 1.55rem; color: var(--plum); margin: 3rem 0 0.85rem; line-height: 1.3; }
+    .post-content :global(h3) { font-family: 'Lora', serif; font-size: 1.2rem; color: var(--plum); margin: 2.25rem 0 0.6rem; }
+    .post-content :global(p) { margin: 0 0 1.5rem; }
+    .post-content :global(ul), .post-content :global(ol) { padding-left: 1.6rem; margin: 0 0 1.5rem; }
+    .post-content :global(li) { margin-bottom: 0.6rem; }
+    .post-content :global(strong) { color: var(--plum); font-weight: 600; }
+    .post-content :global(em) { font-style: italic; }
+    .post-content :global(a) { color: var(--coral); font-weight: 600; text-decoration: underline; }
+    .post-content :global(blockquote) { border-left: 4px solid var(--coral); margin: 2.5rem 0; padding: 1.1rem 1.75rem; background: rgba(242,107,107,0.05); border-radius: 0 10px 10px 0; font-style: italic; color: var(--plum); }
+    .post-content :global(hr) { border: none; border-top: 1px solid rgba(78,58,90,0.12); margin: 3rem 0; }
+    .post-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.25rem; padding-top: 3rem; margin-top: 3.5rem; border-top: 1px solid rgba(78,58,90,0.1); }
+    .cta-button { display: inline-block; background-color: var(--coral); color: #fff; font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.95rem; padding: 0.8rem 1.9rem; border-radius: 100px; text-decoration: none; }
+    .cta-button:hover { background-color: var(--coral-deep); }
+    .post-cta-band { background-color: var(--plum); padding: 5rem 1.5rem; text-align: center; }
+    .post-cta-inner { max-width: 560px; margin: 0 auto; }
+    .cta-accent { font-family: 'Caveat', cursive; font-size: 1.4rem; color: var(--gold); display: block; margin-bottom: 0.75rem; }
+    .post-cta-band p { font-family: 'Poppins', sans-serif; font-size: 1rem; color: rgba(250,247,242,0.82); line-height: 1.75; margin: 0 auto 2rem; }
+    .cta-button-light { display: inline-block; background-color: var(--cream); color: var(--plum); font-family: 'Poppins', sans-serif; font-weight: 700; font-size: 0.95rem; padding: 0.8rem 1.9rem; border-radius: 100px; text-decoration: none; }
+    footer { background: var(--cream); padding: 48px 0 40px; border-top: 1px solid rgba(78,58,90,0.08); }
+    footer .wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px; }
+    .footer-links { display: flex; gap: 24px; font-size: 0.9rem; color: var(--plum-soft); }
+    .footer-links a:hover { color: var(--coral); }
+    .footer-bottom { border-top: 1px solid rgba(78,58,90,0.08); margin-top: 32px; padding-top: 24px; text-align: center; font-size: 0.82rem; color: var(--plum-soft); width: 100%; }
+    @media (max-width: 600px) {
+      .post-article { padding: 3rem 1.25rem 4rem; }
+      .post-footer { flex-direction: column; align-items: flex-start; }
+      .nav-links { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="/" class="logo">Social<span class="magic-word">Magic</span><span class="with-jen">with jen</span></a>
+    <div class="nav-links">
+      <a href="/#method">The Method</a>
+      <a href="/#fit">Is This You?</a>
+      <a href="/#about">About Jen</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/blog">Blog</a>
+    </div>
+    <a href="/#contact" class="nav-cta">Let's Get Started</a>
+  </div>
+</nav>
+
+<article class="post-article">
+  <div class="post-container">
+    <a href="/blog" class="back-link">← Back to Blog</a>
+    {post.data.tags && post.data.tags.length > 0 && (
+      <div class="tag-row">
+        {post.data.tags.map((tag) => (
+          <span class="tag">{tag}</span>
+        ))}
+      </div>
+    )}
+    <h1 class="post-title">{post.data.title}</h1>
+    <p class="post-description">{post.data.description}</p>
+    <div class="post-meta">
+      <span>By {post.data.author}</span>
+      <span class="meta-sep">·</span>
+      <time datetime={new Date(post.data.publishDate).toISOString()}>
+        {formatDate(post.data.publishDate)}
+      </time>
+    </div>
+    <div class="post-content">
+      <Content />
+    </div>
+    <div class="post-footer">
+      <a href="/blog" class="back-link">← Back to Blog</a>
+      <a href="/#contact" class="cta-button">Start the Conversation</a>
+    </div>
+  </div>
+</article>
+
+<section class="post-cta-band">
+  <div class="post-cta-inner">
+    <span class="cta-accent">Every business has a story worth sharing.</span>
+    <p>Let's uncover yours and build a marketing system that sounds like you — not like everyone else.</p>
+    <a href="/#contact" class="cta-button-light">Work With Jen</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <a href="/" class="logo">Social<span class="magic-word">Magic</span><span class="with-jen">with jen</span></a>
+    <div class="footer-links">
+      <a href="/#method">The Method</a>
+      <a href="/#fit">Is This You?</a>
+      <a href="/blog">Blog</a>
+      <a href="/#contact">Let's Get Started</a>
+    </div>
+  </div>
+  <div class="wrap footer-bottom">
+    &copy; 2026 Social Magic with Jen. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>
