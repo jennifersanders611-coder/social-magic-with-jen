@@ -1,7 +1,7 @@
 ---
 title: "Why Your Story Is Your Greatest Marketing Asset"
 description: "Most small business owners underestimate the power of their own story. Here's why it's the one thing AI can't manufacture — and how to start using it."
-publishDate: 2025-01-15
+publishDate: 2026-06-22
 author: Jen
 tags: ["brand story", "marketing", "small business"]
 ---
