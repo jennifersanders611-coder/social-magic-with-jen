@@ -327,6 +327,17 @@
   .method-step p { color: var(--plum-soft); font-size: 0.97rem; }
   @media (max-width: 880px) { .method-layout { grid-template-columns: 1fr; } .method-photo img { aspect-ratio: 16/10; } }
 
+  .system { background: var(--cream); }
+  .system-intro { max-width: 680px; margin: 0 auto 56px; text-align: center; }
+  .system-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .system-card { background: white; border-radius: 20px; padding: 30px 28px; box-shadow: 0 10px 30px rgba(78,58,90,0.06); border: 1px solid rgba(78,58,90,0.06); display: flex; gap: 16px; align-items: flex-start; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+  .system-card:hover { transform: translateY(-4px); box-shadow: 0 14px 32px rgba(78,58,90,0.09); }
+  .system-card .sparkle { flex-shrink: 0; width: 1.4rem; height: 1.4rem; color: var(--gold); margin-top: 4px; }
+  .system-card h3 { font-size: 1.05rem; margin-bottom: 6px; }
+  .system-card p { color: var(--plum-soft); font-size: 0.95rem; }
+  .system-footer { text-align: center; margin-top: 48px; font-family: 'Caveat', cursive; font-size: 1.3rem; color: var(--plum); }
+  @media (max-width: 760px) { .system-grid { grid-template-columns: 1fr; } }
+
   .walkaway { background: var(--plum); color: var(--cream); }
   .walkaway .section-eyebrow { color: var(--gold); }
   .walkaway h2 { color: var(--cream); }
@@ -673,6 +684,75 @@
   </div>
 </section>
 
+<section class="system" id="system">
+  <div class="wrap">
+    <div class="system-intro">
+      <span class="section-eyebrow">what you're actually building</span>
+      <h2>Most business owners don't need more content. They need a system.</h2>
+      <p>A marketing system is the foundation that keeps working long after our time together ends &mdash; here's what that actually includes.</p>
+    </div>
+    <div class="system-grid">
+      <div class="system-card">
+        <span class="sparkle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg></span>
+        <div>
+          <h3>A Clear Point of View</h3>
+          <p>Know exactly what your business stands for and what makes it different.</p>
+        </div>
+      </div>
+      <div class="system-card">
+        <span class="sparkle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg></span>
+        <div>
+          <h3>A Repeatable Process</h3>
+          <p>The MAGIC Method becomes your roadmap for creating content with purpose, not guesswork.</p>
+        </div>
+      </div>
+      <div class="system-card">
+        <span class="sparkle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg></span>
+        <div>
+          <h3>A Website That Works for You</h3>
+          <p>Messaging that explains your value and turns visitors into subscribers and future clients.</p>
+        </div>
+      </div>
+      <div class="system-card">
+        <span class="sparkle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg></span>
+        <div>
+          <h3>A Blog That Works While You Sleep</h3>
+          <p>Content that answers your audience's real questions, helps people find you, and gives you something to repurpose everywhere else.</p>
+        </div>
+      </div>
+      <div class="system-card">
+        <span class="sparkle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg></span>
+        <div>
+          <h3>An Email System That Keeps Showing Up For You</h3>
+          <p>Welcome sequences and newsletters that keep talking to your audience even on the days you can't.</p>
+        </div>
+      </div>
+      <div class="system-card">
+        <span class="sparkle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg></span>
+        <div>
+          <h3>A Library of Your Expertise</h3>
+          <p>Your ideas, stories, offers, and FAQs, organized in one place so nothing gets lost in your head anymore.</p>
+        </div>
+      </div>
+      <div class="system-card">
+        <span class="sparkle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg></span>
+        <div>
+          <h3>AI That Actually Sounds Like You</h3>
+          <p>A workspace trained on your voice, your audience, your expertise &mdash; so you can create faster without sounding like everyone else.</p>
+        </div>
+      </div>
+      <div class="system-card">
+        <span class="sparkle"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c.6 4.8 2 8 4.8 9.6 1.2.7 2.4 1.1 3.6 1.4-1.2.3-2.4.7-3.6 1.4C14 14 12.6 17.2 12 22c-.6-4.8-2-8-4.8-9.6C6 11.7 4.8 11.3 3.6 11c1.2-.3 2.4-.7 3.6-1.4C10 8 11.4 4.8 12 0z"/></svg></span>
+        <div>
+          <h3>A Long-Term Content Strategy</h3>
+          <p>A plan for showing up consistently, instead of chasing whatever trend showed up in your feed this week.</p>
+        </div>
+      </div>
+    </div>
+    <p class="system-footer">You won't just have more content. You'll have a marketing system you can keep building on for years to come.</p>
+  </div>
+</section>
+
 <section class="walkaway" id="walkaway">
   <div class="wrap">
     <div class="walkaway-intro">
@@ -863,6 +943,10 @@
       <details class="faq-item">
         <summary>Can I use ChatGPT instead of Claude? <span class="plus">+</span></summary>
         <p>Yes. The Brand MAGIC Guide and AI Knowledge Base are built to work with either Claude or ChatGPT, so you can use whichever tool you're most comfortable with.</p>
+      </details>
+      <details class="faq-item">
+        <summary>Do I need to switch email providers, website platforms, or other tools I'm already using? <span class="plus">+</span></summary>
+        <p>Nope. We build your marketing system using the tools you're already using &mdash; your current email provider, website platform, or whatever else is already part of your day-to-day. If I see a tool that might genuinely serve you better, I'll mention it, but that's always a suggestion, never a requirement. What you keep, what you switch, and what you try is entirely up to you.</p>
       </details>
       <details class="faq-item">
         <summary>What happens after the session? <span class="plus">+</span></summary>
