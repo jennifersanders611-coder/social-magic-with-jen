@@ -1,7 +1,7 @@
 ---
 title: "AI Isn't the Problem. Clarity Is."
 description: "Everyone's using AI. Almost no one is using it well. Here's the one thing that separates marketing that sounds like you from marketing that sounds like everyone else."
-publishDate: 2025-01-29
+publishDate: 2026-07-01
 author: Jen
 tags: ["AI", "marketing", "clarity"]
 ---
