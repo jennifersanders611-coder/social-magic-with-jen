@@ -1,7 +1,7 @@
 ---
 title: "Why Service-Based Businesses Struggle with Marketing (And What Actually Helps)"
 description: "If you're a service provider who puts clients first, marketing probably keeps landing at the bottom of your list. You're not lazy — you're just missing a system."
-publishDate: 2025-02-12
+publishDate: 2026-06-11
 author: Jen
 tags: ["service business", "marketing", "systems"]
 ---
