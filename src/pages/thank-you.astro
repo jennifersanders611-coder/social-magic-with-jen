@@ -1,33 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>You're in! | Social Magic with Jen</title>
-<meta name="robots" content="noindex">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Poppins:wght@400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --cream: #faf7f2;
-    --plum: #4e3a5a;
-    --coral: #f26b6b;
-    --teal: #5fa8a8;
-    --gold: #d9a441;
-    --ink: #3a3a3a;
-  }
-
-  * { box-sizing: border-box; }
-
-  body {
-    margin: 0;
-    padding: 0;
-    background-color: var(--cream);
-    font-family: 'Poppins', Arial, sans-serif;
-    color: var(--ink);
-  }
-
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout
+  title="You're in! | Social Magic with Jen"
+  robots="noindex"
+>
+  <style>
   .wrap {
     min-height: 100vh;
     display: flex;
@@ -267,9 +245,9 @@
     .photo-frame-wrap { margin-top: -58px; }
     .header { padding: 24px 20px 50px 20px; }
   }
-</style>
-</head>
-<body>
+  </style>
+
+
 
 <div class="wrap">
 
@@ -324,5 +302,5 @@
 
 </div>
 
-</body>
-</html>
+
+</Layout>
