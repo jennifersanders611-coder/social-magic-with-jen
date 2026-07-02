@@ -1,39 +1,137 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Social Magic with Jen offers heartfelt social strategy, content systems, and brand messaging for founders and service providers."
-    />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <meta name="generator" content={Astro.generator} />
-    <title>Social Magic with Jen</title>
-  </head>
-  <body>
-    <slot />
-  </body>
-</html>
+---
+// src/layouts/Layout.astro
+//
+// Shared <head> + brand foundation for every page on socialmagicwithjen.com.
+// Anything that should be the SAME everywhere (brand colors, fonts, favicons,
+// base reset, Google Analytics) lives here — edit it once, it updates every page.
+//
+// Anything page-specific (title, description, canonical, OG/Twitter data,
+// robots, and optional JSON-LD) is passed in as a prop from each page.
+//
+// Page-specific visual styles (nav layout, hero sections, etc.) stay in each
+// page's own <style> block — this Layout only owns shared foundation, not design.
 
-<style>
-  html,
-  body {
-    margin: 0;
-    width: 100%;
-    min-height: 100%;
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+  robots?: string;              // defaults to "index, follow"
+  ogTitle?: string;              // falls back to `title`
+  ogDescription?: string;        // falls back to `description`
+  ogImage?: string;              // absolute URL
+  ogImageWidth?: string;
+  ogImageHeight?: string;
+  keywords?: string;
+}
+
+const {
+  title,
+  description,
+  canonical,
+  robots = "index, follow",
+  ogTitle,
+  ogDescription,
+  ogImage,
+  ogImageWidth,
+  ogImageHeight,
+  keywords,
+} = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>{title}</title>
+{description && <meta name="description" content={description}>}
+{keywords && <meta name="keywords" content={keywords}>}
+<meta name="author" content="Jen Sanders">
+<meta name="robots" content={robots}>
+{canonical && <link rel="canonical" href={canonical}>}
+
+<!-- Open Graph / Social Sharing -->
+<meta property="og:type" content="website">
+{canonical && <meta property="og:url" content={canonical}>}
+<meta property="og:title" content={ogTitle ?? title}>
+{(ogDescription ?? description) && <meta property="og:description" content={ogDescription ?? description}>}
+{ogImage && <meta property="og:image" content={ogImage}>}
+{ogImageWidth && <meta property="og:image:width" content={ogImageWidth}>}
+{ogImageHeight && <meta property="og:image:height" content={ogImageHeight}>}
+<meta property="og:site_name" content="Social Magic with Jen">
+<meta property="og:locale" content="en_US">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+{canonical && <meta name="twitter:url" content={canonical}>}
+<meta name="twitter:title" content={ogTitle ?? title}>
+{(ogDescription ?? description) && <meta name="twitter:description" content={ogDescription ?? description}>}
+{ogImage && <meta name="twitter:image" content={ogImage}>}
+
+<!-- Favicons -->
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
+
+<!-- Brand fonts — one shared link covering every weight used anywhere on the site -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Poppins:wght@300;400;500;600&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XCXJ80QP2C"></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XCXJ80QP2C');
+</script>
+
+<!-- Page-specific extras (e.g. JSON-LD structured data) -->
+<slot name="head" />
+
+<style is:global>
+  :root {
+    --cream: #faf7f2;
+    --plum: #4e3a5a;
+    --plum-soft: #6b5380;
+    --coral: #f26b6b;
+    --coral-deep: #e1504f;
+    --teal: #5fa8a8;
+    --gold: #d9a441;
+    --ink: #3a2c45;
+    --max: 1180px;
   }
 
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3 { font-family: 'Lora', serif; color: var(--plum); line-height: 1.15; font-weight: 600; }
+  .script { font-family: 'Caveat', cursive; font-weight: 600; }
+  a { text-decoration: none; color: inherit; }
+  img { display: block; max-width: 100%; }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+  @media (max-width: 420px) { .wrap { padding: 0 20px; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
   }
 </style>
+</head>
+<body>
+<slot />
+</body>
+</html>
