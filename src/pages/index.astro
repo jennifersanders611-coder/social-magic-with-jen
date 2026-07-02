@@ -1,45 +1,19 @@
 ---
+import Layout from '../layouts/Layout.astro';
+
 // This page has no server-side data or props — it's a static marketing page.
-// The frontmatter block above is intentionally empty.
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Social Magic with Jen | Marketing Strategy for Women Entrepreneurs</title>
-<meta name="description" content="Social Magic with Jen helps women-owned service businesses build AI-powered marketing systems that sound like them — not everyone else. Discover the Brand MAGIC Method.">
-<meta name="keywords" content="marketing strategy for women entrepreneurs, AI marketing for small business, brand voice guide, women-owned business marketing, Brand MAGIC Method, marketing system for coaches, marketing for solo founders">
-<meta name="author" content="Jen Sanders">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://socialmagicwithjen.com/">
-
-<!-- Open Graph / Social Sharing -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://socialmagicwithjen.com/">
-<meta property="og:title" content="Social Magic with Jen | Marketing Strategy for Women Entrepreneurs">
-<meta property="og:description" content="Build a marketing system that sounds like you, not everyone else. Social Magic with Jen helps women-owned service businesses use AI to amplify their voice — not replace it.">
-<meta property="og:image" content="https://socialmagicwithjen.com/images/jen-portrait.jpg">
-<meta property="og:image:width" content="1279">
-<meta property="og:image:height" content="1600">
-<meta property="og:site_name" content="Social Magic with Jen">
-<meta property="og:locale" content="en_US">
-
-<!-- Twitter Card -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://socialmagicwithjen.com/">
-<meta name="twitter:title" content="Social Magic with Jen | Marketing Strategy for Women Entrepreneurs">
-<meta name="twitter:description" content="Build a marketing system that sounds like you, not everyone else. AI marketing for women-owned service businesses.">
-<meta name="twitter:image" content="https://socialmagicwithjen.com/images/jen-portrait.jpg">
-
-<!-- Favicons -->
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
-
-<!-- JSON-LD Structured Data for AI Search & Google -->
+<Layout
+  title="Social Magic with Jen | Marketing Strategy for Women Entrepreneurs"
+  description="Social Magic with Jen helps women-owned service businesses build AI-powered marketing systems that sound like them — not everyone else. Discover the Brand MAGIC Method."
+  keywords="marketing strategy for women entrepreneurs, AI marketing for small business, brand voice guide, women-owned business marketing, Brand MAGIC Method, marketing system for coaches, marketing for solo founders"
+  canonical="https://socialmagicwithjen.com/"
+  ogDescription="Build a marketing system that sounds like you, not everyone else. Social Magic with Jen helps women-owned service businesses use AI to amplify their voice — not replace it."
+  ogImage="https://socialmagicwithjen.com/images/jen-portrait.jpg"
+  ogImageWidth="1279"
+  ogImageHeight="1600"
+>
+  <Fragment slot="head">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -110,42 +84,9 @@
   ]
 }
 </script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Poppins:wght@300;400;500;600&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --cream: #faf7f2;
-    --plum: #4e3a5a;
-    --plum-soft: #6b5380;
-    --coral: #f26b6b;
-    --coral-deep: #e1504f;
-    --teal: #5fa8a8;
-    --gold: #d9a441;
-    --ink: #3a2c45;
-    --max: 1180px;
-  }
+  </Fragment>
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    background: var(--cream);
-    color: var(--ink);
-    font-family: 'Poppins', sans-serif;
-    font-weight: 300;
-    line-height: 1.7;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
-
-  h1, h2, h3 { font-family: 'Lora', serif; color: var(--plum); line-height: 1.15; font-weight: 600; }
-  .script { font-family: 'Caveat', cursive; font-weight: 600; }
-  a { text-decoration: none; color: inherit; }
-  img { display: block; max-width: 100%; }
-  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
-  @media (max-width: 420px) { .wrap { padding: 0 20px; } }
-
+  <style>
   .sparkle { display: inline-block; position: relative; width: 1em; height: 1em; }
   .sparkle svg { width: 100%; height: 100%; display: block; }
 
@@ -452,9 +393,9 @@
   .footer-bottom-row { border-top: 1px solid rgba(78,58,90,0.08); margin-top: 32px; padding-top: 24px; text-align: center; font-size: 0.82rem; color: var(--plum-soft); }
   .footer-bottom-row a { text-decoration: underline; }
   .footer-bottom-row a:hover { color: var(--coral); }
-</style>
-</head>
-<body>
+  </style>
+
+
 
 <nav id="site-nav">
   <div class="wrap">
@@ -1012,5 +953,5 @@
   </div>
 </footer>
 
-</body>
-</html>
+
+</Layout>
