@@ -1,4 +1,5 @@
 ---
+import Layout from '../../layouts/Layout.astro';
 import { getCollection, render } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
@@ -23,35 +24,13 @@ function formatDate(date: Date) {
   });
 }
 ---
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{post.data.title} | Social Magic with Jen</title>
-  <meta name="description" content={post.data.description}>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Poppins:wght@300;400;500;600&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet">
+<Layout
+  title={`${post.data.title} | Social Magic with Jen`}
+  description={post.data.description}
+  canonical={`https://socialmagicwithjen.com/blog/${post.id}/`}
+>
   <style>
-    :root {
-      --cream: #faf7f2;
-      --plum: #4e3a5a;
-      --plum-soft: #6b5380;
-      --coral: #f26b6b;
-      --coral-deep: #e1504f;
-      --teal: #5fa8a8;
-      --gold: #d9a441;
-      --ink: #3a2c45;
-      --max: 1180px;
-    }
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { background: var(--cream); color: var(--ink); font-family: 'Poppins', sans-serif; font-weight: 300; line-height: 1.7; -webkit-font-smoothing: antialiased; }
-    a { text-decoration: none; color: inherit; }
-    img { display: block; max-width: 100%; }
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
-
+    
     nav { position: sticky; top: 0; z-index: 50; background: rgba(250,247,242,0.92); backdrop-filter: blur(6px); border-bottom: 1px solid rgba(78,58,90,0.08); }
     nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 84px; gap: 16px; }
     .logo { font-family: 'Lora', serif; font-weight: 700; font-size: 1.5rem; color: var(--plum); display: flex; align-items: baseline; gap: 8px; flex-shrink: 0; }
@@ -102,9 +81,10 @@ text-transform: uppercase; letter-spacing: 0.07em; color: var(--teal); backgroun
       .post-footer { flex-direction: column; align-items: flex-start; }
       .nav-links { display: none; }
     }
+  
   </style>
-</head>
-<body>
+
+
 
 <nav>
   <div class="wrap">
@@ -172,5 +152,5 @@ text-transform: uppercase; letter-spacing: 0.07em; color: var(--teal); backgroun
   </div>
 </footer>
 
-</body>
-</html>
+
+</Layout>
