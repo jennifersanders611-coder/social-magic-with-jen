@@ -1,46 +1,16 @@
 ---
-// Static legal page — no server-side data needed.
+import Layout from '../layouts/Layout.astro';
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Terms of Use | Social Magic with Jen</title>
-<meta name="description" content="Terms of Use for socialmagicwithjen.com — the official terms governing your use of the Social Magic with Jen website.">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://socialmagicwithjen.com/terms/">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://socialmagicwithjen.com/terms/">
-<meta property="og:title" content="Terms of Use | Social Magic with Jen">
-<meta property="og:site_name" content="Social Magic with Jen">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@600;700&family=Poppins:wght@300;400;500;600&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --cream: #faf7f2;
-    --plum: #4e3a5a;
-    --plum-soft: #6b5380;
-    --coral: #f26b6b;
-    --coral-deep: #e1504f;
-    --teal: #5fa8a8;
-    --gold: #d9a441;
-    --ink: #3a2c45;
-    --max: 800px;
-  }
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body {
-    background: var(--cream); color: var(--ink); font-family: 'Poppins', sans-serif;
-    font-weight: 300; line-height: 1.75; -webkit-font-smoothing: antialiased;
-  }
-  a { text-decoration: none; color: var(--coral); }
-  a:hover { color: var(--coral-deep); }
-  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 32px; }
+<Layout
+  title="Terms of Use | Social Magic with Jen"
+  description="Terms of Use for socialmagicwithjen.com — the official terms governing your use of the Social Magic with Jen website."
+  canonical="https://socialmagicwithjen.com/terms/"
+  robots="index, follow"
+>
+  <style>
+  .wrap { max-width: 800px; }
 
+  
   nav {
     background: rgba(250, 247, 242, 0.92); backdrop-filter: blur(6px);
     border-bottom: 1px solid rgba(78, 58, 90, 0.08); position: sticky; top: 0; z-index: 10;
@@ -66,9 +36,9 @@
   footer .wrap { max-width: 1180px; text-align: center; font-size: 0.85rem; color: var(--plum-soft); }
   footer a { color: var(--plum-soft); text-decoration: underline; }
   footer a:hover { color: var(--coral); }
-</style>
-</head>
-<body>
+  </style>
+
+
 
 <nav>
   <div class="wrap">
@@ -125,5 +95,5 @@
   </div>
 </footer>
 
-</body>
-</html>
+
+</Layout>
