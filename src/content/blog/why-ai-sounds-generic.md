@@ -8,7 +8,7 @@ image: ""
 imageAlt: ""
 ---
 
-Last year, I was building AI workflows as a Chief Growth Officer. Everyone wanted the same thing: faster content, less blank-page staring.
+Last year, I was building AI workflows. Everyone wanted the same thing: faster content, less blank-page staring.
 
 So we gave AI a shot.
 
