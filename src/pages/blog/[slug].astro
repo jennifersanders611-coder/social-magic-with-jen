@@ -28,6 +28,9 @@ function formatDate(date: Date) {
   title={`${post.data.title} | Social Magic with Jen`}
   description={post.data.description}
   canonical={`https://socialmagicwithjen.com/blog/${post.id}/`}
+  ogImage={post.data.image ? `https://socialmagicwithjen.com${post.data.image}` : undefined}
+  ogImageWidth="1200"
+  ogImageHeight="630"
 >
   <style>
     
