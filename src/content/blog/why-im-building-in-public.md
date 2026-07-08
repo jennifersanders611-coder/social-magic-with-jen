@@ -4,8 +4,8 @@ description: "A year inside corporate AI taught me something small businesses de
 publishDate: 2026-07-02
 author: Jen
 tags: ["build in public", "marketing systems", "AI", "small business"]
-image: ""
-imageAlt: ""
+image: "/images/why-im-building-in-public.jpg"
+imageAlt: "Hand holding a smartphone surrounded by question mark speech bubbles"
 ---
 
 A few years ago, I was building something I never expected to build.
