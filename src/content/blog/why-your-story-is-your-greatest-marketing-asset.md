@@ -4,6 +4,8 @@ description: "Most small business owners underestimate the power of their own st
 publishDate: 2026-06-22
 author: Jen
 tags: ["brand story", "marketing", "small business"]
+image: "/images/why-your-story-is-your-greatest-marketing-asset.jpg"
+imageAlt: "Overhead view of hands typing on a laptop surrounded by abstract shapes"
 ---
 
 Your story is the one thing your competitors can never copy.
