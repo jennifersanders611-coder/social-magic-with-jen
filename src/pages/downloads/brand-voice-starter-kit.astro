@@ -1,0 +1,498 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const recentPosts = (await getCollection('blog'))
+  .sort((a, b) => new Date(b.data.publishDate).valueOf() - new Date(a.data.publishDate).valueOf())
+  .slice(0, 3);
+
+function formatDate(date: Date) {
+  return new Date(date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+}
+---
+<Layout
+  title="Your Brand Voice Starter Kit | Social Magic with Jen"
+  robots="noindex"
+>
+<style>
+.wrap {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  width: 100%;
+  background-color: var(--plum);
+  padding: 26px 24px 60px 24px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.logo-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.logo span { color: var(--coral); }
+
+.tagline {
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  color: var(--gold);
+  margin: 0;
+}
+
+.sparkle-hero {
+  margin-top: 14px;
+  display: inline-block;
+  animation: pop-in 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) 0.15s both;
+}
+
+.sparkle-hero svg { width: 26px; height: 26px; }
+
+@keyframes pop-in {
+  0%   { transform: scale(0.4) rotate(-15deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sparkle-hero { animation: none; }
+}
+
+.photo-frame-wrap {
+  position: relative;
+  z-index: 3;
+  margin-top: -70px;
+  display: flex;
+  justify-content: center;
+  animation: pop-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.05s both;
+}
+
+.photo-frame {
+  width: 148px;
+  height: 148px;
+  border-radius: 50%;
+  border: 6px solid #ffffff;
+  box-shadow: 0 10px 24px rgba(78, 58, 90, 0.22);
+  object-fit: cover;
+  display: block;
+}
+
+.card {
+  max-width: 560px;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 20px;
+  margin: 20px 20px 40px 20px;
+  padding: 8px 36px 40px 36px;
+  box-shadow: 0 12px 32px rgba(78, 58, 90, 0.12);
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+h1 {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 30px;
+  color: var(--plum);
+  margin: 0 0 6px 0;
+  line-height: 1.25;
+}
+
+.subhead {
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  color: var(--coral);
+  margin: 0 0 22px 0;
+}
+
+p {
+  font-size: 16px;
+  line-height: 1.7;
+  margin: 0 0 18px 0;
+  text-align: left;
+}
+
+.divider {
+  border: none;
+  border-top: 1px dashed #e6dcd0;
+  margin: 28px 0;
+}
+
+.download-box {
+  background-color: var(--cream);
+  border-left: 4px solid var(--coral);
+  border-radius: 12px;
+  padding: 24px;
+  margin: 0 0 24px 0;
+  text-align: center;
+}
+
+.download-box .eyebrow {
+  font-family: 'Caveat', cursive;
+  font-size: 19px;
+  color: var(--coral);
+  margin: 0 0 6px 0;
+}
+
+.download-box h2 {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 19px;
+  color: var(--plum);
+  margin: 0 0 16px 0;
+}
+
+.download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 30px;
+  background-color: var(--coral);
+  color: #ffffff;
+  border-radius: 30px;
+  text-decoration: none;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.download-btn:hover {
+  background-color: var(--coral-deep);
+  transform: translateY(-2px);
+}
+
+.download-btn svg { width: 18px; height: 18px; }
+
+.whats-coming {
+  text-align: left;
+  margin-bottom: 8px;
+}
+
+.whats-coming h3 {
+  font-family: 'Lora', Georgia, serif;
+  font-size: 17px;
+  color: var(--plum);
+  margin: 0 0 10px 0;
+}
+
+.social-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin: 24px 0 4px 0;
+}
+
+.social-btn {
+  display: inline-block;
+  padding: 11px 22px;
+  border-radius: 30px;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.social-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+.social-btn.ig { background-color: var(--coral); }
+.social-btn.li { background-color: var(--teal); }
+.social-btn.fb { background-color: var(--gold); }
+
+.missing-email {
+  max-width: 560px;
+  width: 100%;
+  text-align: center;
+  padding: 0 36px 56px 36px;
+}
+
+.missing-email p {
+  text-align: center;
+  font-size: 14px;
+  color: #7a7280;
+  margin: 0 0 14px 0;
+}
+
+.mail-btn {
+  display: inline-block;
+  padding: 13px 28px;
+  background-color: var(--plum);
+  color: #ffffff;
+  border-radius: 30px;
+  text-decoration: none;
+  font-family: 'Poppins', Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background-color 0.15s ease;
+}
+
+.mail-btn:hover {
+  background-color: #3d2e48;
+}
+
+a:focus-visible, .social-btn:focus-visible, .mail-btn:focus-visible, .download-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+@media (max-width: 480px) {
+  .card { padding: 8px 24px 32px 24px; margin: 16px 16px 32px 16px; }
+  h1 { font-size: 25px; }
+  .missing-email { padding: 0 20px 48px 20px; }
+  .photo-frame { width: 120px; height: 120px; }
+  .photo-frame-wrap { margin-top: -58px; }
+  .header { padding: 24px 20px 50px 20px; }
+}
+
+.why-band {
+  width: 100%;
+  background-color: var(--plum);
+  padding: 64px 24px;
+}
+.why-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+.why-eyebrow {
+  font-family: 'Caveat', cursive;
+  font-size: 21px;
+  color: var(--gold);
+  margin: 0 0 10px 0;
+}
+.why-band h2 {
+  color: #ffffff;
+  font-size: clamp(1.5rem, 3.5vw, 2rem);
+  margin: 0 0 18px 0;
+}
+.why-body {
+  color: rgba(255,255,255,0.85);
+  font-size: 1rem;
+  line-height: 1.8;
+  text-align: left;
+}
+
+.hello-band {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 60px 24px;
+}
+.hello-inner {
+  max-width: 620px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 26px;
+}
+.hello-photo {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 8px 20px rgba(78, 58, 90, 0.15);
+}
+.hello-eyebrow {
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  color: var(--coral);
+  margin: 0 0 6px 0;
+}
+.hello-body {
+  font-size: 0.98rem;
+  line-height: 1.75;
+  text-align: left;
+  margin: 0;
+}
+.hello-body a { color: var(--coral); font-weight: 600; text-decoration: underline; }
+.hello-body a:hover { color: var(--coral-deep); }
+
+@media (max-width: 520px) {
+  .hello-inner { flex-direction: column; text-align: center; gap: 16px; }
+  .hello-body { text-align: center; }
+}
+
+.blog-band {
+  width: 100%;
+  background-color: var(--cream);
+  padding: 64px 24px 72px;
+}
+.blog-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+.blog-eyebrow {
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  color: var(--teal);
+  margin: 0 0 6px 0;
+}
+.blog-band h2 {
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  margin: 0 0 32px 0;
+}
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+  margin-bottom: 28px;
+}
+.blog-card {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: left;
+  box-shadow: 0 8px 22px rgba(78, 58, 90, 0.07);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: block;
+}
+.blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(78, 58, 90, 0.13);
+}
+.blog-card h3 {
+  font-family: 'Lora', serif;
+  font-size: 1.05rem;
+  color: var(--plum);
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+}
+.blog-card p {
+  font-size: 0.88rem;
+  color: #5a5a5a;
+  line-height: 1.6;
+  margin: 0 0 12px 0;
+  text-align: left;
+}
+.blog-date {
+  font-size: 0.76rem;
+  color: #999;
+}
+.blog-all-link {
+  display: inline-block;
+  font-weight: 600;
+  color: var(--coral);
+  font-size: 0.95rem;
+}
+.blog-all-link:hover { color: var(--coral-deep); }
+</style>
+
+<div class="wrap">
+
+  <div class="header">
+    <div class="logo-row">
+      <p class="logo">Social<span>Magic</span></p>
+      <p class="tagline">with jen</p>
+    </div>
+    <div class="sparkle-hero">
+      <svg viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+        <path d="M22 2 L26 18 L42 22 L26 26 L22 42 L18 26 L2 22 L18 18 Z" fill="#d9a441"/>
+      </svg>
+    </div>
+  </div>
+
+  <div class="photo-frame-wrap">
+    <img src="/images/hello-gorgeous-mug.jpg" alt="Jen holding a mug that says hello gorgeous" class="photo-frame">
+  </div>
+
+  <div class="card">
+    <h1>Your kit is ready</h1>
+    <p class="subhead">grab a pen, get specific &#10022;</p>
+
+    <p>This isn't a style guide you read once and forget. It's a worksheet that helps you capture how you actually sound, so every email, post, and page finally sounds like the same person wrote it. Five exercises. One voice. Here's your copy.</p>
+
+    <div class="download-box">
+      <p class="eyebrow">your download</p>
+      <h2>The Brand Voice Starter Kit</h2>
+      <a href="/downloads/brand-voice-starter-kit.pdf" download class="download-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+          <polyline points="7 10 12 15 17 10"></polyline>
+          <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        Download the PDF
+      </a>
+    </div>
+
+    <hr class="divider">
+
+    <div class="whats-coming">
+      <h3>While you're filling it in</h3>
+      <p>You'll also start getting The Spark: short, honest notes on building a marketing system that sounds like you, so this doesn't turn into one more worksheet that sits in a folder.</p>
+    </div>
+
+    <p style="text-align:center; margin-bottom: 10px; font-family: 'Caveat', cursive; font-size: 19px; color: var(--gold);">while you're here, let's connect &#10022;</p>
+
+    <div class="social-row">
+      <a href="https://www.instagram.com/socialmagicwithjen/" class="social-btn ig">Instagram</a>
+      <a href="https://www.linkedin.com/in/jenniferlsanders" class="social-btn li">LinkedIn</a>
+      <a href="https://www.facebook.com/socialmagicwithjen/" class="social-btn fb">Facebook</a>
+    </div>
+  </div>
+
+  <div class="missing-email">
+    <p>Want help turning this first draft into a full Brand Voice Guide and teaching AI to use it? I'd love to talk about what that could look like for your business.</p>
+    <a href="mailto:socialmagicwithjen.com@gmail.com?subject=I%20want%20help%20with%20my%20brand%20voice" class="mail-btn">Let's Talk &rarr;</a>
+  </div>
+
+</div>
+
+<section class="why-band">
+  <div class="why-inner">
+    <p class="why-eyebrow">why this matters &#10022;</p>
+    <h2>Your voice isn't one sentence. It's a pattern.</h2>
+    <p class="why-body">A brand voice guide isn't a list of adjectives on a slide. It's the same personality showing up consistently, whether someone's reading your website, opening your email, or scrolling past your post. Most businesses never write any of it down, so it drifts a little every time someone new writes for them, including you on a tired Tuesday. This worksheet is the first draft of writing it down.</p>
+  </div>
+</section>
+
+<section class="hello-band">
+  <div class="hello-inner">
+    <img src="/images/jen-portrait.jpg" alt="Jen Sanders, founder of Social Magic with Jen" class="hello-photo">
+    <div>
+      <p class="hello-eyebrow">a quick hello &#10022;</p>
+      <p class="hello-body">I'm Jen. I help women-owned service businesses stop patching together marketing pieces that don't sound like each other, and start building one system that sounds like them. If that's where you're headed next, <a href="/#about">here's more about how I work</a>.</p>
+    </div>
+  </div>
+</section>
+
+{recentPosts.length > 0 && (
+  <section class="blog-band">
+    <div class="blog-inner">
+      <p class="blog-eyebrow">while you're here &#10022;</p>
+      <h2>From the blog</h2>
+      <div class="blog-grid">
+        {recentPosts.map((post) => (
+          <a href={`/blog/${post.id}`} class="blog-card">
+            <h3>{post.data.title}</h3>
+            <p>{post.data.description}</p>
+            <span class="blog-date">{formatDate(post.data.publishDate)}</span>
+          </a>
+        ))}
+      </div>
+      <a href="/blog" class="blog-all-link">Read more on the blog &rarr;</a>
+    </div>
+  </section>
+)}
+
+</Layout>
