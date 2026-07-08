@@ -4,6 +4,8 @@ description: "If you're a service provider who puts clients first, marketing pro
 publishDate: 2026-06-11
 author: Jen
 tags: ["service business", "marketing", "systems"]
+image: "/images/why-service-businesses-struggle-with-marketing.jpg"
+imageAlt: "Illustration of a mouth speaking and an ear listening, representing marketing that doesn't connect"
 ---
 
 You're excellent at what you do.
