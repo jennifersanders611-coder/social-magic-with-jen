@@ -4,6 +4,8 @@ description: "Everyone's using AI. Almost no one is using it well. Here's the on
 publishDate: 2026-07-01
 author: Jen
 tags: ["AI", "marketing", "clarity"]
+image: "/images/ai-isn't-the-problem-clarity-is.jpg"
+imageAlt: "Illustration representing clarity cutting through generic AI marketing noise"
 ---
 
 AI didn't break your marketing.
