@@ -1,0 +1,186 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+<Layout
+  title="Free Resources | Social Magic with Jen"
+  description="Free tools and guides to help women-owned service businesses build marketing that sounds like them. Start with The Marketing Alignment Audit."
+  keywords="free marketing resources, marketing audit for small business, women-owned business marketing tools, brand voice resources"
+  canonical="https://socialmagicwithjen.com/resources"
+  ogDescription="Free tools to help you spot the gap between marketing that's 'good enough' and marketing that actually builds trust."
+  ogImage="https://socialmagicwithjen.com/images/jen-portrait.jpg"
+  ogImageWidth="1279"
+  ogImageHeight="1600"
+>
+<style>
+.nav-links { display: flex; gap: 28px; font-size: 0.92rem; font-weight: 500; color: var(--plum); }
+.nav-links a { position: relative; padding: 4px 0; }
+.nav-links a::after { content: ''; position: absolute; left: 0; bottom: -2px; width: 0; height: 2px; background: var(--coral); transition: width 0.25s ease; }
+.nav-links a:hover::after { width: 100%; }
+
+nav {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(250, 247, 242, 0.92);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(78, 58, 90, 0.08);
+}
+nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 84px; gap: 16px; }
+.logo { font-family: 'Lora', serif; font-weight: 700; font-size: 1.5rem; color: var(--plum); display: flex; align-items: baseline; gap: 8px; flex-shrink: 0; }
+.logo .magic-word { color: var(--coral); }
+.logo .with-jen { font-family: 'Caveat', cursive; font-weight: 600; font-size: 1.1rem; color: var(--gold); }
+.nav-cta {
+  background: var(--coral); color: var(--cream); padding: 11px 24px; border-radius: 999px;
+  font-weight: 600; font-size: 0.9rem; transition: transform 0.2s ease, background 0.2s ease; white-space: nowrap;
+  flex-shrink: 0;
+}
+.nav-cta:hover { background: var(--coral-deep); transform: translateY(-1px); }
+
+@media (max-width: 860px) {
+  .nav-links { display: none; }
+}
+
+/* Page content */
+.hero {
+  padding: 72px 24px 56px;
+  text-align: center;
+}
+.eyebrow {
+  font-family: 'Caveat', cursive;
+  font-size: 22px;
+  color: var(--gold);
+  margin: 0 0 8px 0;
+}
+.hero h1 {
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  margin: 0 0 18px 0;
+}
+.hero p {
+  max-width: 620px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  color: var(--ink);
+}
+
+.resource-grid {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 32px 96px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+.resource-card {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 36px 32px;
+  box-shadow: 0 10px 28px rgba(78, 58, 90, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.resource-tag {
+  align-self: flex-start;
+  background: rgba(95, 168, 168, 0.14);
+  color: var(--teal);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 999px;
+}
+
+.resource-card h2 {
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.resource-card p {
+  font-size: 0.98rem;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.65;
+}
+
+.resource-btn {
+  margin-top: auto;
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 26px;
+  background: var(--coral);
+  color: var(--cream);
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+.resource-btn:hover { background: var(--coral-deep); transform: translateY(-2px); }
+
+/* Placeholder card for what's coming */
+.resource-card.coming-soon {
+  background: transparent;
+  border: 1.5px dashed rgba(78, 58, 90, 0.2);
+  box-shadow: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--plum-soft);
+}
+.resource-card.coming-soon h2 { color: var(--plum-soft); font-size: 1.15rem; }
+
+.footer-note {
+  text-align: center;
+  padding: 0 24px 80px;
+}
+.footer-note p {
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  color: var(--gold);
+}
+</style>
+
+<nav id="site-nav">
+  <div class="wrap">
+    <a href="/" class="logo">Social<span class="magic-word">Magic</span><span class="with-jen">with jen</span></a>
+    <div class="nav-links">
+      <a href="/#method">The Method</a>
+      <a href="/#fit">Is This You?</a>
+      <a href="/#about">About Jen</a>
+      <a href="/#faq">FAQ</a>
+      <a href="/blog">Blog</a>
+      <a href="/resources">Resources</a>
+    </div>
+    <a href="/#contact" class="nav-cta">Let's Get Started</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <p class="eyebrow">free resources &#10022;</p>
+  <h1>Marketing clarity, no strings attached</h1>
+  <p>Real tools to help you spot the gap between marketing that's "good enough" and marketing that actually sounds like you. Start here, no pressure, just clarity.</p>
+</section>
+
+<div class="resource-grid">
+
+  <div class="resource-card">
+    <span class="resource-tag">Self-Audit</span>
+    <h2>The Marketing Alignment Audit</h2>
+    <p>Nine assets. One system. A self-audit that helps you spot where your website, emails, social, and AI stop sounding like each other, and start sounding like one clear brand.</p>
+    <a href="https://social-magic-with-jen.kit.com/f55b300db3" class="resource-btn">Get the Audit &rarr;</a>
+  </div>
+
+  <div class="resource-card coming-soon">
+    <h2>More on the way &#10022;</h2>
+    <p>New tools and guides are in the works. Join The Spark so you're the first to know when they land.</p>
+  </div>
+
+</div>
+
+<div class="footer-note">
+  <p>more magic coming soon</p>
+</div>
+
+</Layout>
