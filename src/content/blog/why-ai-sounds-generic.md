@@ -4,8 +4,8 @@ description: "AI isn't the problem. Most businesses just haven't given it anythi
 publishDate: 2026-07-08
 author: Jen
 tags: ["AI", "marketing", "clarity", "brand voice"]
-image: ""
-imageAlt: ""
+image: "/images/why-ai-sounds-generic.jpg"
+imageAlt: "Illustration of a hand holding a phone surrounded by speech bubbles and question marks"
 ---
 
 Last year, I was building AI workflows. Everyone wanted the same thing: faster content, less blank-page staring.
