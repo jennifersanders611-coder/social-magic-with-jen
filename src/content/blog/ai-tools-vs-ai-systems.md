@@ -1,7 +1,7 @@
 ---
 title: "The Difference Between an AI Tool and an AI System (And Why Most Businesses Never Get Past Tool)"
 description: "Most businesses have an AI tool. Almost none of them have an AI system. Here's the difference, and why it's the reason AI still sounds generic."
-publishDate: 2026-07-14
+publishDate: 2026-07-13
 author: Jen
 tags: ["AI", "marketing systems", "AI workflows"]
 image: "/images/ai-tools-vs-ai-systems.jpg"
