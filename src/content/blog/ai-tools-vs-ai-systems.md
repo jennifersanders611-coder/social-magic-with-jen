@@ -4,8 +4,8 @@ description: "Most businesses have an AI tool. Almost none of them have an AI sy
 publishDate: 2026-07-14
 author: Jen
 tags: ["AI", "marketing systems", "AI workflows"]
-image: ""
-imageAlt: ""
+image: "/images/ai-tools-vs-ai-systems.jpg"
+imageAlt: "Illustrated collage of hands typing on a keyboard surrounded by speech bubbles and abstract shapes, representing AI-assisted communication"
 ---
 
 A few months ago, I was talking with another marketing colleague who'd just "rolled out AI" across her department.
