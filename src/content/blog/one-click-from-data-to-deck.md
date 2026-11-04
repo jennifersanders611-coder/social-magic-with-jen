@@ -4,7 +4,7 @@ description: "I connected our firm hub to Gamma so real data turns into a brande
 publishDate: 2026-11-03
 author: Jen
 tags: ["AI", "systems", "leadership", "clarity"]
-image: "one-click-from-data-to-deck.jpg"
+image: "/images/one-click-from-data-to-deck.jpg"
 imageAlt: "Illustration of dashboard data flowing into a finished, branded presentation"
 ---
 
