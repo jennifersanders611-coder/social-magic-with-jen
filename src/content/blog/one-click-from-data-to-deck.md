@@ -1,7 +1,7 @@
 ---
 title: "One click from data to deck"
 description: "I connected our firm hub to Gamma so real data turns into a branded presentation with one click. The tech was the easy part. Here's what actually made it work."
-publishDate: 2026-11-03
+publishDate: 2026-11-05
 author: Jen
 tags: ["AI", "systems", "leadership", "clarity"]
 image: "/images/one-click-from-data-to-deck.jpg"
